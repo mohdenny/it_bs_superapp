@@ -1,0 +1,2 @@
+export const GET_DISK_SPACE = 'GET_DISK_SPACE'
+export const DISK_SPACE_ERROR = 'DISK_SPACE_ERROR'
