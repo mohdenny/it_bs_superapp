@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import storage from './storage'
+import disk from './disk'
 
 export default combineReducers({
-    storage
+    disk
 })
