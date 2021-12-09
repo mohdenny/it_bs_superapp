@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 // define routes
-app.use('/api/storage', require('./routes/api/storage'));
+app.use('/api/disk', require('./routes/api/disk'));
 
 const PORT = process.env.PORT || 6000;
 
