@@ -1,4 +1,8 @@
-import { GET_DISK_SPACE, DISK_SPACE_ERROR } from "../actions/types"
+import { 
+    GET_DISK_SPACE, 
+    DISK_ERROR, 
+    GET_ALL_DISK
+} from "../actions/types"
 
 const initialState = {
     disks: [],
@@ -7,17 +11,23 @@ const initialState = {
     error: {}
 }
 
-const storageReducer = (state = initialState, action) => {
+const diskReducer = (state = initialState, action) => {
     const { type, payload } = action
     
     switch (type) {
+        case GET_ALL_DISK:
+            return {
+                ...state,
+                disks: payload,
+                loading: false
+            }
         case GET_DISK_SPACE:
             return {
                 ...state,
                 disk: payload,
                 loading: false
             }
-        case DISK_SPACE_ERROR:
+        case DISK_ERROR:
             return {
                 ...state,
                 error: payload,
@@ -28,4 +38,4 @@ const storageReducer = (state = initialState, action) => {
     }
 } 
 
-export default storageReducer
+export default diskReducer
