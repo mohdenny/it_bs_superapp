@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Navbar from './components/navbar/Navbar'
 import Dashboard from './components/dashboard/Dashboard'
 
 // redux
@@ -13,6 +14,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <>
+          <Navbar/>
           <Routes>
             <Route path="/" element={<Dashboard/>}/>
           </Routes>
