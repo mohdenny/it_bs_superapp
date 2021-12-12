@@ -7,13 +7,11 @@ const si = require('systeminformation')
 // @access   Public
 router.get('/:path', async (req, res) => {
     try {
-        setInterval( async () => {
-            const data = await si.fsSize()
-            const path = req.params.path
-            const filter = data.filter(item => item.fs === path)
-            
-            res.send(filter)
-        }, 1000)
+        const data = await si.fsSize()
+        const path = req.params.path
+        const filter = data.filter(item => item.fs === path)
+        
+        res.send(filter)
     } catch (err){
         console.error(err.message)
         res.status(500).send('Server Error')
