@@ -599,6 +599,9 @@ video {
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')
+;
+
 .container {
   width: 100%;
 }
@@ -22417,6 +22420,14 @@ video {
 
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.font-chakra-petch {
+  font-family: Chakra Petch;
+}
+
+.font-roboto {
+  font-family: Roboto;
 }
 
 .text-xs {
@@ -54034,6 +54045,14 @@ video {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .sm\:font-chakra-petch {
+    font-family: Chakra Petch;
+  }
+
+  .sm\:font-roboto {
+    font-family: Roboto;
+  }
+
   .sm\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -85295,6 +85314,14 @@ video {
 
   .md\:font-mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .md\:font-chakra-petch {
+    font-family: Chakra Petch;
+  }
+
+  .md\:font-roboto {
+    font-family: Roboto;
   }
 
   .md\:text-xs {
@@ -116560,6 +116587,14 @@ video {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .lg\:font-chakra-petch {
+    font-family: Chakra Petch;
+  }
+
+  .lg\:font-roboto {
+    font-family: Roboto;
+  }
+
   .lg\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -147823,6 +147858,14 @@ video {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
+  .xl\:font-chakra-petch {
+    font-family: Chakra Petch;
+  }
+
+  .xl\:font-roboto {
+    font-family: Roboto;
+  }
+
   .xl\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -179084,6 +179127,14 @@ video {
 
   .\32xl\:font-mono {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  .\32xl\:font-chakra-petch {
+    font-family: Chakra Petch;
+  }
+
+  .\32xl\:font-roboto {
+    font-family: Roboto;
   }
 
   .\32xl\:text-xs {
