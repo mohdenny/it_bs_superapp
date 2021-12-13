@@ -1,11 +1,24 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 import { connect } from 'react-redux'
 import { getAllDisk, getDiskSpace } from '../../actions/disk'
 
 const data = [
     { 'path': 'D', 'label': 'data' },
     { 'path': 'C', 'label': 'system' },
+]
+
+const diskTest = [
+    {
+        "fs":"C:",
+        "type":"NTFS",
+        "size":"134642397184",
+        "used":"131712499712",
+        "available":"2929897472",
+        "use":"80",
+        "mount":"C:"
+    }
 ]
 
 const Dashboard = ({ getAllDisk, getDiskSpace, disk: { disk, disks } }) => {
@@ -16,7 +29,15 @@ const Dashboard = ({ getAllDisk, getDiskSpace, disk: { disk, disks } }) => {
     }, [getAllDisk, getDiskSpace, disks])
 
     const convertByte = (data) => {
-        console.log(toString(data).length)
+        const units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+        let l = 0 
+        let n = parseInt(data, 10) || 0
+
+        while(n >=1024 && ++l){
+            n = n/1024
+        }
+
+        return(n.toFixed(n < 10 && l > 0 ? 1: 0) + ' ' + units[l])
     }
 
     return (
@@ -42,19 +63,34 @@ const Dashboard = ({ getAllDisk, getDiskSpace, disk: { disk, disks } }) => {
                                                                     <p>Used:</p>
                                                                     <p>Free:</p>
                                                                 </div>
-                                                                <div> 
-                                                                    <p>{item.size}</p>   
+                                                                <div>   
                                                                     <p>{convertByte(item.size)}</p>   
-                                                                    <p>{item.used}</p>
-                                                                    <p>{item.available}</p>
+                                                                    <p>{convertByte(item.used)}</p>
+                                                                    <p>{convertByte(item.available)}</p>
                                                                 </div>
                                                             </div>
-                                                            <div className='transform -translate-y-11 flex border-2 overflow-hidden w-20 h-auto rounded-full'> 
-                                                                <div className='absolute z-20 bg-white h-1/2 w-full'></div>   
+                                                            <div className='transform -translate-y-11 flex border-2 overflow-hidden w-20 h-auto rounded-full'>     
                                                                 <div className='z-30 px-2 flex items-center h-full w-full justify-center'>
-                                                                    <p className='font-bold' >{`${item.use}%`}</p>
+                                                                    <p className={classnames('font-bold', { 'text-white' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('60%') })} >{`${Math.ceil(item.use)}%`}</p>
                                                                 </div>
-                                                                <div className='absolute z-10 h-full bg-blue-400 w-full'></div>  
+                                                                <div className={classnames('absolute z-20 bg-white w-full',
+                                                                    { 'h-100%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('0%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('0%') },
+                                                                    { 'h-90%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('0%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('10%') },
+                                                                    { 'h-80%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('10%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('20%') },
+                                                                    { 'h-70%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('20%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('30%') },
+                                                                    { 'h-60%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('30%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('40%') },
+                                                                    { 'h-50%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('40%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('50%') },
+                                                                    { 'h-40%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('50%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('60%') },
+                                                                    { 'h-30%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('60%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('70%') },
+                                                                    { 'h-20%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('70%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('80%') },
+                                                                    { 'h-10%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('80%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('90%') },
+                                                                    { 'h-0%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('90%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('99%') },
+                                                                    { 'h-0%' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('99%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('100%') },
+                                                                )}></div>
+                                                                <div className={classnames('absolute z-10 h-full w-full', 
+                                                                    { 'bg-red-600' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('79%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('100%') },
+                                                                    { 'bg-blue-600' : Math.ceil(parseInt(convertByte(item.use))) >= parseInt('0%') && Math.ceil(parseInt(convertByte(item.use))) <= parseInt('79%') },
+                                                                )}></div>  
                                                             </div>
                                                         </div>
                                                     )
