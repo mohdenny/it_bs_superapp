@@ -1,7 +1,7 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navbar from './components/navbar/Navbar'
-import Dashboard from './components/dashboard/Dashboard'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Sidebar from './components/layout/Sidebar'
+import Routes from './components/routing/Routes'
 
 // redux
 import { Provider } from 'react-redux'
@@ -14,10 +14,11 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <>
-          <Navbar/>
-          <Routes>
-            <Route path="/" element={<Dashboard/>}/>
-          </Routes>
+          <Sidebar>
+            <Switch>
+              <Route component={Routes}/>
+            </Switch>
+          </Sidebar>
         </>
       </Router>
     </Provider>
