@@ -31,7 +31,7 @@ const CardItem = ({ data }) => {
             </div>
             <div className='transform -translate-y-11 flex border-2 overflow-hidden w-20 h-auto rounded-full'>     
                 <div className='z-30 px-2 flex items-center h-full w-full justify-center'>
-                    <p className={classnames('font-bold', { 'text-white' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('50%') })} >{`${Math.floor(data.use)}%`}</p>
+                    <p className={classnames('font-bold', { 'text-white' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('60%') })} >{`${Math.floor(data.use)}%`}</p>
                 </div>
                 <div className={classnames('absolute z-20 bg-white w-full',
                     { 'h-100%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('0%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('0%') },
