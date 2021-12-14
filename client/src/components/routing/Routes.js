@@ -2,7 +2,8 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Dashboard from '../dashboard/Dashboard'
 import Explore from '../explore/Explore'
-import Ticketing from '../ticketing/Ticketing'
+import Report from '../report/Report'
+import Ticket from '../ticket/Ticket'
 import Monitoring from '../monitoring/Monitoring'
 import Checklist from '../checklist/Checklist'
 import Inventory from '../inventory/Inventory'
@@ -15,7 +16,8 @@ const Routing = () => {
                 <Switch>
                     <Route exact path='/dashboard' component={Dashboard} />
                     <Route exact path='/explore' component={Explore} />
-                    <Route exact path='/ticketing' component={Ticketing} />
+                    <Route exact path='/ticket' component={Ticket} />
+                    <Route exact path='/report' component={Report} />
                     <Route exact path='/monitoring' component={Monitoring} />
                     <Route exact path='/checklist' component={Checklist} />
                     <Route exact path='/inventory' component={Inventory} />
