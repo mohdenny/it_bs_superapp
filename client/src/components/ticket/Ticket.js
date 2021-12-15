@@ -20,17 +20,17 @@ const Ticket = () => {
     })
 
     return (
-        <div className='space-y-4'>
-            <div className='flex flex-col items-center justify-center bg-white h-auto w-full '>
-                <div className='h-12 space-x-4'>
+        <div className='space-y-4 h-full w-full'>
+            <div className='flex flex-col items-center justify-center bg-white h-full w-full '>
+                <div className='h-12 space-x-4 w-full'>
                     <form className='flex flex-row h-full items-center justify-center py-2'>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="border-l-4 border-t-2 border-b-2 rounded-l-xl px-2 py-1 h-full w-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="border-l-4 border-t-2 border-b-2 rounded-l-lg px-2 py-1 h-full w-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                         <input type={'text'} className='border-2 border-gray-400 h-8 rounded-r-xl'/>
                     </form>
                 </div>
-                <div className='flex flex-row items-center justify-center h-12 space-x-4'>
+                <div className='flex flex-row items-center justify-center h-12 space-x-4 w-full'>
                     <button 
                         className={classnames('bg-white text-gray-800 px-4 py-1 border-2 rounded-xl', {
                         'bg-gray-300 text-gray-900 font-bold shadow-md' : !term
@@ -101,7 +101,7 @@ const Ticket = () => {
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <table className="min-w-full divide-y divide-gray-200">
+                            <table className="min-w-full divide-y table-auto divide-gray-200">
                                 <thead className="bg-gray-50">
                                     <tr>
                                         <th

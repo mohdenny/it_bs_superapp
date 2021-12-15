@@ -31,25 +31,25 @@ const CardItem = ({ data }) => {
             </div>
             <div className='transform -translate-y-11 flex border-2 overflow-hidden w-20 h-auto rounded-full'>     
                 <div className='z-30 px-2 flex items-center h-full w-full justify-center'>
-                    <p className={classnames('font-bold', { 'text-white' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('60%') })} >{`${Math.floor(data.use)}%`}</p>
+                    <p className={classnames('font-bold', { 'text-white' : Math.floor(parseInt(data.use)) >= parseInt('60%') })} >{`${Math.floor(data.use)}%`}</p>
                 </div>
                 <div className={classnames('absolute z-20 bg-white w-full',
-                    { 'h-100%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('0%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('0%') },
-                    { 'h-90%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('0%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('10%') },
-                    { 'h-80%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('10%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('20%') },
-                    { 'h-70%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('20%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('30%') },
-                    { 'h-60%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('30%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('40%') },
-                    { 'h-50%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('40%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('50%') },
-                    { 'h-40%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('50%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('60%') },
-                    { 'h-30%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('60%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('70%') },
-                    { 'h-20%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('70%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('80%') },
-                    { 'h-10%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('80%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('90%') },
-                    { 'h-0%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('90%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('99%') },
-                    { 'h-0%' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('99%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('100%') },
+                    { 'h-100%' : Math.floor(parseInt(data.use)) >= parseInt('0%') && Math.floor(parseInt(data.use)) <= parseInt('0%') },
+                    { 'h-90%' : Math.floor(parseInt(data.use)) >= parseInt('0%') && Math.floor(parseInt(data.use)) <= parseInt('10%') },
+                    { 'h-80%' : Math.floor(parseInt(data.use)) >= parseInt('10%') && Math.floor(parseInt(data.use)) <= parseInt('20%') },
+                    { 'h-70%' : Math.floor(parseInt(data.use)) >= parseInt('20%') && Math.floor(parseInt(data.use)) <= parseInt('30%') },
+                    { 'h-60%' : Math.floor(parseInt(data.use)) >= parseInt('30%') && Math.floor(parseInt(data.use)) <= parseInt('40%') },
+                    { 'h-50%' : Math.floor(parseInt(data.use)) >= parseInt('40%') && Math.floor(parseInt(data.use)) <= parseInt('50%') },
+                    { 'h-40%' : Math.floor(parseInt(data.use)) >= parseInt('50%') && Math.floor(parseInt(data.use)) <= parseInt('60%') },
+                    { 'h-30%' : Math.floor(parseInt(data.use)) >= parseInt('60%') && Math.floor(parseInt(data.use)) <= parseInt('70%') },
+                    { 'h-20%' : Math.floor(parseInt(data.use)) >= parseInt('70%') && Math.floor(parseInt(data.use)) <= parseInt('80%') },
+                    { 'h-10%' : Math.floor(parseInt(data.use)) >= parseInt('80%') && Math.floor(parseInt(data.use)) <= parseInt('90%') },
+                    { 'h-0%' : Math.floor(parseInt(data.use)) >= parseInt('90%') && Math.floor(parseInt(data.use)) <= parseInt('99%') },
+                    { 'h-0%' : Math.floor(parseInt(data.use)) >= parseInt('99%') && Math.floor(parseInt(data.use)) <= parseInt('100%') },
                 )}></div>
                 <div className={classnames('absolute z-10 h-full w-full', 
-                    { 'bg-red-500' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('79%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('100%') },
-                    { 'bg-blue-500' : Math.floor(parseInt(convertByte(data.use))) >= parseInt('0%') && Math.floor(parseInt(convertByte(data.use))) <= parseInt('79%') },
+                    { 'bg-red-500' : Math.floor(parseInt(data.use)) >= parseInt('79%') && Math.floor(parseInt(data.use)) <= parseInt('100%') },
+                    { 'bg-blue-500' : Math.floor(parseInt(data.use)) >= parseInt('0%') && Math.floor(parseInt(data.use)) <= parseInt('79%') },
                 )}></div>  
             </div>
         </div>
