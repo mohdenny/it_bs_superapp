@@ -242,7 +242,7 @@ const Sidebar = ({ children }) => {
                         </div>
                     }
 
-                    <div className="w-full h-screen">
+                    <div className="w-full">
                         <div className=' bg-gray-100 overflow-y-auto'>
                             {children}
                         </div>
