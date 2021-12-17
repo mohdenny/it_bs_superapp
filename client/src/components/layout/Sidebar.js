@@ -37,7 +37,6 @@ const Sidebar = ({ children }) => {
                         </svg>
                     </div>
                 </nav>
-
                 
                 <div className='flex flex-1 overflow-hidden border-2 border-red-500'>
                     {
@@ -242,8 +241,8 @@ const Sidebar = ({ children }) => {
                         </div>
                     }
 
-                    <div className="w-full">
-                        <div className=' bg-gray-100 overflow-y-auto'>
+                    <div className="flex flex-1">
+                        <div className='flex flex-1 border-8 border-yellow-400 bg-gray-100 overflow-y-auto'>
                             {children}
                         </div>
                     </div>

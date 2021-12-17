@@ -20,8 +20,8 @@ const Ticket = () => {
     })
 
     return (
-        <div className='space-y-4 h-full w-full'>
-            <div className='flex flex-col items-center justify-center bg-white h-full w-full '>
+        <div className='space-y-4 h-full w-full border-8 border-blue-400'>
+            <div className='flex flex-col items-center justify-center bg-white h-auto w-full '>
                 <div className='h-12 space-x-4 w-full'>
                     <form className='flex flex-row h-full items-center justify-center py-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" class="border-l-4 border-t-2 border-b-2 rounded-l-lg px-2 py-1 h-full w-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">

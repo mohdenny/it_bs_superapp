@@ -12,7 +12,7 @@ import Setting from '../setting/Setting'
 const Routing = () => {
     return (
         <section>
-            <div className='px-4 py-2'>
+            <div className='px-4 py-2 h-full w-full border-8 border-purple-400'>
                 <Switch>
                     <Route exact path='/dashboard' component={Dashboard} />
                     <Route exact path='/explore' component={Explore} />
