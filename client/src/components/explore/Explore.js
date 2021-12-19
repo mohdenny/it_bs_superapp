@@ -2,7 +2,9 @@ import React from 'react'
 
 const Explore = () => {
     return (
-        <p>Explore</p>
+        <div className=' w-full h-full'>
+            <p>Explore</p>
+        </div>
     )
 }
 
