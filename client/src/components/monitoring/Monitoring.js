@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { dataDisk } from '../../utils/staticData'
-import Card from '../monitoring/Card'
-import CardItem from '../monitoring/CardItem'
+import MonitoringCard from './MonitoringCard'
+import MonitoringCardItem from './MonitoringCardItem'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getAllDisk, getDiskSpace } from '../../actions/disk'
@@ -19,17 +19,17 @@ const Monitoring = ({ getAllDisk, getDiskSpace, disk: { disk, disks } }) => {
                 {
                     dataDisk && dataDisk.map((item, index) => {
                         return (
-                            <Card key={index} data={item}>
+                            <MonitoringCard key={index} data={item}>
                                 {
                                     disks && disks.filter(filterdisk => filterdisk.mount === `${item.path}:`)
                                         .map((item, index) => {
                                             return (
-                                                    <CardItem key={index} data={item} />
+                                                    <MonitoringCardItem key={index} data={item} />
                                                 )
                                             }
                                         )
                                 }
-                            </Card>
+                            </MonitoringCard>
                         )
                     })
                 }
