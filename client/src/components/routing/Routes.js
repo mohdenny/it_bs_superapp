@@ -12,11 +12,13 @@ import Setting from '../setting/Setting'
 const Routing = () => {
     return (
         <section>
-            <div className='px-4 py-2 h-full w-full border-8 border-purple-400'>
+            <div className='px-4 py-2 h-auto w-full'>
                 <Switch>
                     <Route exact path='/dashboard' component={Dashboard} />
                     <Route exact path='/explore' component={Explore} />
                     <Route exact path='/ticket' component={Ticket} />
+                    <Route exact path='/ticket/:id' component={Ticket} />
+                    <Route exact path='/ticket/history/:id' component={Ticket} />
                     <Route exact path='/report' component={Report} />
                     <Route exact path='/monitoring' component={Monitoring} />
                     <Route exact path='/checklist' component={Checklist} />
