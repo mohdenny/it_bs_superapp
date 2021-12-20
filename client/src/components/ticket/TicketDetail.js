@@ -3,7 +3,8 @@ import moment from 'moment'
 import TicketHistory from './TicketHistory'
 
 const TicketDetail = ({ data }) => {
-    const datas = data.dataTicket
+    console.log(data)
+    const datas = data.data
 
     return (
         <div className='flex flex-col items-center justify-between h-full w-full py-2 space-y-2 px-4'>
@@ -46,7 +47,7 @@ const TicketDetail = ({ data }) => {
                 </div>
             </div>
             <div className='flex flex-row w-full'>
-                <p className='w-full'>Status:</p>
+                <p className='w-full'>Last Status:</p>
                 <p className='w-full font-medium'>{datas.status}</p>
             </div>
             <div className='flex flex-row w-full'>

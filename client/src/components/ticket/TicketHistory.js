@@ -3,7 +3,9 @@ import moment from 'moment'
 import classnames from 'classnames'
 
 const TicketHistory = ({ data }) => {
-    const [ items, setItems ] = useState(data.itemTicket)
+
+    console.log(data)
+    const [ items, setItems ] = useState(data.data)
     const [ readNote, setReadNote ] = useState(true)
 
     const handleReadNote = (value, data, id) => {
@@ -110,7 +112,7 @@ const TicketHistory = ({ data }) => {
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                                                 <button 
                                                     className="text-indigo-600 hover:text-indigo-900"
-                                                    onClick={() => handleReadNote(false, data.itemTicket, item.id)}
+                                                    onClick={() => handleReadNote(false, data.item, item.id)}
                                                 >
                                                     Read
                                                 </button>
