@@ -1,12 +1,12 @@
 import { 
-    GET_DISK_SPACE, 
+    GET_MAPPING_DISK, 
     DISK_ERROR, 
-    GET_ALL_DISK
+    GET_SAVED_DISK
 } from "../actions/types"
 
 const initialState = {
-    disks: [],
-    disk: null,
+    mappingDisk: [],
+    savedDisk: null,
     loading: true,
     error: {}
 }
@@ -15,16 +15,16 @@ const diskReducer = (state = initialState, action) => {
     const { type, payload } = action
     
     switch (type) {
-        case GET_ALL_DISK:
+        case GET_MAPPING_DISK:
             return {
                 ...state,
-                disks: payload,
+                mappingDisk: payload,
                 loading: false
             }
-        case GET_DISK_SPACE:
+        case GET_SAVED_DISK:
             return {
                 ...state,
-                disk: payload,
+                savedDisk: payload,
                 loading: false
             }
         case DISK_ERROR:
