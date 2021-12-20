@@ -1,13 +1,14 @@
 import api from '../utils/api'
-import { GET_DISK_SPACE, DISK_ERROR, GET_ALL_DISK } from './types'
+import { dataDisk } from '../utils/staticData'
+import { GET_MAPPING_DISK, DISK_ERROR, GET_SAVED_DISK } from './types'
 
-//  get all disk
-export const getAllDisk = () => async dispatch => {
+//  get mapping disk
+export const getMappingDisk = () => async dispatch => {
     try {
         const res = await api.get(`/disk`)
 
         dispatch({
-            type: GET_ALL_DISK,
+            type: GET_MAPPING_DISK,
             payload: res.data
         })
     } catch (err) {
@@ -18,14 +19,17 @@ export const getAllDisk = () => async dispatch => {
     }
 }
 
-//  get disk space
-export const getDiskSpace = path => async dispatch => {
+//  get saved disk
+export const getSavedDisk = () => async dispatch => {
     try {
-        const res = await api.get(`/disk/${path}:`)
+        // const res = await api.get(`/disk/${path}:`)
+        const res = await dataDisk
 
+        console.log(res)
         dispatch({
-            type: GET_DISK_SPACE,
-            payload: res.data
+            type: GET_SAVED_DISK,
+            payload: res
+            // payload: res.data
         })
     } catch (err) {
         dispatch({
