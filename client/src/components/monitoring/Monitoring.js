@@ -3,14 +3,14 @@ import MonitoringCard from './MonitoringCard'
 import MonitoringCardItem from './MonitoringCardItem'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getSavedDisk, getMappingDisk } from '../../actions/disk'
+import { getSavedDiskPath, getMappingDisk } from '../../actions/disk'
 
-const Monitoring = ({ getSavedDisk, getMappingDisk, disk: { savedDisk, mappingDisk } }) => {
+const Monitoring = ({ getSavedDiskPath, getMappingDisk, disk: { savedDisk, mappingDisk } }) => {
 
     useEffect(() => {
-        getSavedDisk()
+        getSavedDiskPath()
         getMappingDisk()
-    }, [getSavedDisk, getMappingDisk, mappingDisk])
+    }, [getSavedDiskPath, getMappingDisk])
 
     return (
         <>
@@ -47,4 +47,4 @@ const mapStateToProps = state => ({
     disk: state.disk
 })
 
-export default connect(mapStateToProps, { getMappingDisk, getSavedDisk })(Monitoring)
+export default connect(mapStateToProps, { getMappingDisk, getSavedDiskPath })(Monitoring)
