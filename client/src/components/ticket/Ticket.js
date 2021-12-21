@@ -4,48 +4,98 @@ import classnames from 'classnames'
 import Modal from '../modal/Modal'
 import TicketForm from './TicketForm'
 import TicketDetail from './TicketDetail'
-import TicketHistory from './TicketHistory'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getTickets, getTicket } from '../../actions/ticket'
+import { getTickets, getTicketById, getTicketByStatus } from '../../actions/ticket'
 
-const Ticket = ({ getTickets, getTicket, ticket: { tickets, ticket } }) => {
-    const [ term, setTerm ] = useState()
-    const [ data, setData ] = useState(tickets)
+const Ticket = ({ getTickets, getTicketById, getTicketByStatus, ticket: { tickets, ticket } }) => {
+    const [ isActiveButton, setIsActiveButton ] = useState()
+    const [ listTicket, setListTicket ] = useState(tickets)
     const [ callModalForm, setCallModalForm ] = useState(false)
     const [ callModalDetail, setCallModalDetail ] = useState(false)
-    const [ callModalHistory, setCallModalHistory ] = useState(false)
-    const [ dataModal, setDataModal ] = useState()
 
     useEffect(() => {
         getTickets()
-        getTicket(term)
-    }, [getTickets, getTicket, tickets, term])
+    }, [getTickets])
 
-    const filterTicket = (term) => {
-        setData(term)
-        setData(ticket)
-    }
-
-    const countTicketByTerm = (data, term) => {
-        let count = data.filter(item => item.status === term)
+    const countTicketByTerm = (term) => {
+        let count = tickets.filter(item => item.status === term)
         return count.length
     }
 
-    const handleCallModalForm = (title, data, items) => {
-        setCallModalForm(true)
-        setDataModal({'title': title, 'data': data, 'items': items})
+    const handleCallModal = (id, modal)  => {
+        getTicketById(id)
+
+        switch(modal){
+            case('modal-detail'):
+                setCallModalDetail(true)
+                break
+            default:
+                setCallModalForm(true)
+        }   
     }
 
-    const handleCallModalHistory = (title, data, items) => {
-        setCallModalHistory(true)
-        setDataModal({'title': title, 'data': data, 'items': items})
+    const handleButtonFilterByStatus = (status) => {
+        setIsActiveButton(status)
+
+        if(!status){
+            getTickets()
+            setListTicket(tickets)
+        } else {
+            getTicketByStatus(status)
+            setListTicket(ticket)
+        }
+        
     }
 
-    const handleCallModalDetail = (title, data, items) => {
-        setCallModalDetail(true)
-        setDataModal({'title': title, 'data': data, 'items': items})
-    }
+    const renderedList = listTicket.map(item => {
+        return (
+            <tr key={item.id}>
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className='ml-4'>
+                        <button className="text-sm text-gray-900 font-bold uppercase hover:text-gray-700" onClick={() => handleCallModal(item.id, 'modal-detail')}>{item.subject}</button>
+                        <div className="text-sm text-gray-500 capitalize">{item.department}</div>
+                    </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+                        <div className="flex-col">
+                            {   
+                                item.onduty && item.onduty.map((item, index) => {
+                                    return (
+                                        <div key={index} className="text-sm text-gray-900">{item}</div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                    <span className={classnames("px-2 inline-flex text-xs leading-5 font-semibold rounded-full capitalize", 
+                        { 'bg-yellow-300 text-yellow-800' : item.status === 'open' },
+                        { 'bg-blue-300 text-blue-800' : item.status === 'in progress' },
+                        { 'bg-red-300 text-red-800' : item.status === 'pending' },
+                        { 'bg-pink-300 text-pink-800' : item.status === 'on hold' },
+                        { 'bg-purple-300 text-purple-800' : item.status === 'escalated' },
+                        { 'bg-green-300 text-green-800' : item.status === 'solved' },
+                        { 'bg-gray-300 text-gray-800' : item.status === 'closed' },
+                    )}>
+                        {item.status}
+                    </span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 capitalize">{item.priority}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 ">{moment(item.date).format('D-M-YYYY, H:mm')}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
+                    <button className="text-indigo-600 hover:text-indigo-900">
+                        Edit
+                    </button>
+                    <button className="text-indigo-600 hover:text-indigo-900">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        )
+    })
 
     return (
         <>
@@ -54,7 +104,7 @@ const Ticket = ({ getTickets, getTicket, ticket: { tickets, ticket } }) => {
                     <div className='flex flex-row items-center justify-center h-12 space-x-4 w-full py-2'>
                         <button 
                             className='flex flex-row h-full items-center space-x-2 justify-center px-2 bg-blue-400 rounded-xl hover:bg-blue-500'
-                            onClick={() => handleCallModalForm('Create New Ticket')}
+                            
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="text-white py-1 h-full w-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -71,67 +121,67 @@ const Ticket = ({ getTickets, getTicket, ticket: { tickets, ticket } }) => {
                     <div className='flex flex-row items-center justify-center h-12 space-x-4 w-full'>
                         <button 
                             className={classnames('bg-white text-gray-800 px-4 py-1 border-2  rounded-xl hover:bg-gray-300', {
-                            'bg-gray-300 text-gray-900 font-bold shadow-md' : !term
+                            'bg-gray-300 text-gray-900 font-bold shadow-md' : !isActiveButton
                             })} 
-                            onClick={() => setData()}
+                            onClick={() => handleButtonFilterByStatus()}
                         >
                             All
                         </button>
                         <button 
                             className={classnames('bg-yellow-200 text-yellow-800 px-4 py-1 rounded-xl hover:bg-yellow-300', {
-                            'bg-yellow-300 text-yellow-900 font-bold shadow-md' : term === 'open'
+                            'bg-yellow-300 text-yellow-900 font-bold shadow-md' : isActiveButton === 'open'
                             })} 
-                            onClick={() => setData('open')}
+                            onClick={() => handleButtonFilterByStatus('open')}
                         >   
-                            Open { countTicketByTerm(tickets, 'open') && <sup>{`${countTicketByTerm(tickets, 'open')}`}</sup> }
+                            Open { tickets && <sup>{`${countTicketByTerm('open')}`}</sup> }
                         </button>
                         <button 
                             className={classnames('bg-blue-200 text-blue-800 px-4 py-1 rounded-xl hover:bg-blue-300', {
-                            'bg-blue-300 text-blue-900 font-bold shadow-md' : term === 'in progress'
+                            'bg-blue-300 text-blue-900 font-bold shadow-md' : isActiveButton === 'in progress'
                             })} 
-                            onClick={() => setData('in progress')}
+                            onClick={() => handleButtonFilterByStatus('in progress')}
                         >   
-                            In Progress { countTicketByTerm(tickets, 'in progress') && <sup>{`${countTicketByTerm(tickets, 'in progress')}`}</sup> }
+                            In Progress { tickets && <sup>{`${countTicketByTerm('in progress')}`}</sup> }
                         </button>
                         <button 
                             className={classnames('bg-red-200 text-red-800 px-4 py-1 rounded-xl hover:bg-red-300', {
-                            'bg-red-300 text-red-900 font-bold shadow-md' : term === 'pending'
+                            'bg-red-300 text-red-900 font-bold shadow-md' : isActiveButton === 'pending'
                             })} 
-                            onClick={() => setData('pending')}
+                            onClick={() => handleButtonFilterByStatus('pending')}
                         >   
-                            Pending { countTicketByTerm(tickets, 'pending') && <sup>{`${countTicketByTerm(tickets, 'pending')}`}</sup> }
+                            Pending { tickets && <sup>{`${countTicketByTerm('pending')}`}</sup> }
                         </button>
                         <button 
                             className={classnames('bg-pink-200 text-pink-800 px-4 py-1 rounded-xl hover:bg-pink-300', {
-                            'bg-pink-300 text-pink-900 font-bold shadow-md' : term === 'on hold'
+                            'bg-pink-300 text-pink-900 font-bold shadow-md' : isActiveButton === 'on hold'
                             })} 
-                            onClick={() => setData('on hold')}
+                            onClick={() => handleButtonFilterByStatus('on hold')}
                         >   
-                            On Hold { countTicketByTerm(tickets, 'on hold') && <sup>{`${countTicketByTerm(tickets, 'on hold')}`}</sup> }
+                            On Hold { tickets && <sup>{`${countTicketByTerm('on hold')}`}</sup> }
                         </button>
                         <button 
                             className={classnames('bg-purple-200 text-purple-800 px-4 py-1 rounded-xl hover:bg-purple-300', {
-                            'bg-purple-300 text-purple-900 font-bold shadow-md' : term === 'escalated'
+                            'bg-purple-300 text-purple-900 font-bold shadow-md' : isActiveButton === 'escalated'
                             })} 
-                            onClick={() => setData('escalated')}
+                            onClick={() => handleButtonFilterByStatus('escalated')}
                         >   
-                            Escalated { countTicketByTerm(tickets, 'escalated') && <sup>{`${countTicketByTerm(tickets, 'escalated')}`}</sup> }
+                            Escalated { tickets && <sup>{`${countTicketByTerm('escalated')}`}</sup> }
                         </button>
                         <button 
                             className={classnames('bg-green-200 text-green-800 px-4 py-1 rounded-xl hover:bg-green-300', {
-                            'bg-green-300 text-green-900 font-bold shadow-md' : term === 'solved'
+                            'bg-green-300 text-green-900 font-bold shadow-md' : isActiveButton === 'solved'
                             })} 
-                            onClick={() => setData('solved')}
+                            onClick={() => handleButtonFilterByStatus('solved')}
                         >   
-                            Solved { countTicketByTerm(tickets, 'solved') && <sup>{`${countTicketByTerm(tickets, 'solved')}`}</sup> }
+                            Solved { tickets && <sup>{`${countTicketByTerm('solved')}`}</sup> }
                         </button>
                         <button 
                             className={classnames('bg-gray-200 text-gray-800 px-4 py-1 rounded-xl hover:bg-gray-300', {
-                            'bg-gray-300 text-gray-900 font-bold shadow-md' : term === 'closed'
+                            'bg-gray-300 text-gray-900 font-bold shadow-md' : isActiveButton === 'closed'
                             })} 
-                            onClick={() => setData('closed')}
+                            onClick={() => handleButtonFilterByStatus('closed')}
                         >   
-                            Closed { countTicketByTerm(tickets, 'closed') && <sup>{`${countTicketByTerm(tickets, 'closed')}`}</sup> }
+                            Closed { tickets && <sup>{`${countTicketByTerm('closed')}`}</sup> }
                         </button>
                     </div>
                 </div>
@@ -178,59 +228,7 @@ const Ticket = ({ getTickets, getTicket, ticket: { tickets, ticket } }) => {
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {
-                                            data && data.map((item, index) => {
-                                                return (
-                                                    <tr key={index}>
-                                                        <td className="px-6 py-4 whitespace-nowrap">
-                                                            <div className='ml-4'>
-                                                                <button className="text-sm text-gray-900 font-bold uppercase hover:text-gray-700" onClick={() => handleCallModalDetail(item.subject, item, item.history)}>{item.subject}</button>
-                                                                <div className="text-sm text-gray-500 capitalize">{item.department}</div>
-                                                            </div>
-                                                        </td>
-                                                        <td className="px-6 py-4 whitespace-nowrap">
-                                                            <div className="flex items-center">
-                                                                <div className="flex-col">
-                                                                    {   
-                                                                        item.onduty && item.onduty.map((item, index) => {
-                                                                            return (
-                                                                                <div key={index} className="text-sm text-gray-900">{item}</div>
-                                                                            )
-                                                                        })
-                                                                    }
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td className="px-6 py-4 whitespace-nowrap">
-                                                            <span className={classnames("px-2 inline-flex text-xs leading-5 font-semibold rounded-full capitalize", 
-                                                                { 'bg-yellow-300 text-yellow-800' : item.status === 'open' },
-                                                                { 'bg-blue-300 text-blue-800' : item.status === 'in progress' },
-                                                                { 'bg-red-300 text-red-800' : item.status === 'pending' },
-                                                                { 'bg-pink-300 text-pink-800' : item.status === 'on hold' },
-                                                                { 'bg-purple-300 text-purple-800' : item.status === 'escalated' },
-                                                                { 'bg-green-300 text-green-800' : item.status === 'solved' },
-                                                                { 'bg-gray-300 text-gray-800' : item.status === 'closed' },
-                                                            )}>
-                                                                {item.status}
-                                                            </span>
-                                                        </td>
-                                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 capitalize">{item.priority}</td>
-                                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 ">{moment(item.date).format('D-M-YYYY, H:mm')}</td>
-                                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
-                                                            <button className="text-indigo-600 hover:text-indigo-900" onClick={() => handleCallModalHistory(item.subject, item, item.history)}>
-                                                                History
-                                                            </button>
-                                                            <button className="text-indigo-600 hover:text-indigo-900">
-                                                                Edit
-                                                            </button>
-                                                            <button className="text-indigo-600 hover:text-indigo-900">
-                                                                Delete
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })
-                                        }
+                                        {renderedList}
                                     </tbody>
                                 </table>
                             </div>
@@ -241,32 +239,26 @@ const Ticket = ({ getTickets, getTicket, ticket: { tickets, ticket } }) => {
             { 
                 callModalForm && 
                     ( 
-                        <Modal data={dataModal} onClick={setCallModalForm}/>
+                        <Modal data={ticket} onClick={setCallModalForm}/>
                         //     <TicketForm data={dataModal}/>
                         // </Modal> 
                     )
             }
             { 
-                callModalDetail && 
+                callModalDetail && ticket &&
                     ( 
-                        <Modal data={dataModal} onClick={setCallModalDetail}/>
-                        //     <TicketDetail data={dataModal}/>
-                        // </Modal>
+                        <Modal ticket={ticket} onClick={setCallModalDetail}>
+                            <TicketDetail ticket={ticket}/>
+                        </Modal>
                     )
-            }
-            {   
-                callModalHistory && 
-                    (
-                        <Modal data={dataModal} onClick={setCallModalHistory}/>
-                        //     <TicketHistory data={dataModal}/>
-                        // </Modal>
-                    ) 
             }
         </>
     )
 }
 Ticket.propTypes = {
     getTickets: PropTypes.func.isRequired,
+    getTicketById: PropTypes.func.isRequired,
+    getTicketByStatus: PropTypes.func.isRequired,
     ticket: PropTypes.object.isRequired
 }
 
@@ -274,4 +266,4 @@ const mapStateToProps = state => ({
     ticket: state.ticket
 })
 
-export default connect(mapStateToProps, { getTickets, getTicket })(Ticket)
+export default connect(mapStateToProps, { getTickets, getTicketById, getTicketByStatus })(Ticket)
