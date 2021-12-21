@@ -1,6 +1,6 @@
 import api from '../utils/api'
 import { dataDisk } from '../utils/staticData'
-import { GET_MAPPING_DISK, DISK_ERROR, GET_SAVED_DISK } from './types'
+import { GET_MAPPING_DISK, DISK_ERROR, GET_SAVED_DISK_PATH } from './types'
 
 //  get mapping disk
 export const getMappingDisk = () => async dispatch => {
@@ -20,14 +20,13 @@ export const getMappingDisk = () => async dispatch => {
 }
 
 //  get saved disk
-export const getSavedDisk = () => async dispatch => {
+export const getSavedDiskPath = () => async dispatch => {
     try {
         // const res = await api.get(`/disk/${path}:`)
         const res = await dataDisk
 
-        console.log(res)
         dispatch({
-            type: GET_SAVED_DISK,
+            type: GET_SAVED_DISK_PATH,
             payload: res
             // payload: res.data
         })
