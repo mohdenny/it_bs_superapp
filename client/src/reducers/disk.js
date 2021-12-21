@@ -1,7 +1,7 @@
 import { 
     GET_MAPPING_DISK, 
     DISK_ERROR, 
-    GET_SAVED_DISK
+    GET_SAVED_DISK_PATH
 } from "../actions/types"
 
 const initialState = {
@@ -21,7 +21,7 @@ const diskReducer = (state = initialState, action) => {
                 mappingDisk: payload,
                 loading: false
             }
-        case GET_SAVED_DISK:
+        case GET_SAVED_DISK_PATH:
             return {
                 ...state,
                 savedDisk: payload,
