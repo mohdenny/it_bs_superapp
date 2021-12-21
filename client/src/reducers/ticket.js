@@ -1,7 +1,8 @@
 import {
     GET_TICKETS,
     GET_TICKET,
-    TICKET_ERROR
+    TICKET_ERROR,
+    CLEAR_TICKET
 } from '../actions/types'
 
 const initialState = {
@@ -32,6 +33,11 @@ const ticketReducer = (state = initialState, action) => {
                 ...state,
                 error: payload,
                 loading: false,
+            }
+        case CLEAR_TICKET:
+            return {
+                ...state,
+                tickets: null
             }
         default:
             return state
