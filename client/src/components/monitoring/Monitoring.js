@@ -10,7 +10,7 @@ const Monitoring = ({ getSavedDiskPath, getMappingDisk, disk: { savedDisk, mappi
     useEffect(() => {
         getSavedDiskPath()
         getMappingDisk()
-    }, [getSavedDiskPath, getMappingDisk])
+    }, [getSavedDiskPath, getMappingDisk, savedDisk, mappingDisk])
 
     return (
         <>
