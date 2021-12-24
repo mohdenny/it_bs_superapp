@@ -3,7 +3,8 @@ import {
     GET_TICKETS,
     GET_TICKET,
     TICKET_ERROR,
-    CLEAR_TICKET
+    CLEAR_TICKET,
+    GET_TICKET_BY_STATUS
 } from "./types"
 
 //  get all ticket
@@ -44,16 +45,17 @@ export const getTicketById = id => async dispatch => {
     }
 }
 
-//  get ticket by id
+//  get ticket by STATUS
 export const getTicketByStatus = status => async dispatch => {
     try {
         const res = await dataTicket
 
         dispatch({
-            type: GET_TICKET,
+            type: GET_TICKET_BY_STATUS,
             // payload: res.data
             payload: res.filter(item => item.status === status)
         })
+
     } catch (err) {
         dispatch({
             type: TICKET_ERROR,
