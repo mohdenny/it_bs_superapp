@@ -3,24 +3,24 @@ import moment from 'moment'
 import classnames from 'classnames'
 
 const TicketHistory = ({ ticket }) => {
-    const [ dataTicket, setDataTicket ] = useState(ticket)
-    const [ readNote, setReadNote ] = useState(true)
+    const [ ticketByNote, setTicketByNote ] = useState(ticket)
+    const [ isViewDetail, setIsViewDetail ] = useState(true)
 
     const handleReadNote = (boolean, id) => {
         if(boolean){
-            setReadNote(boolean)
-            setDataTicket(ticket)
+            setIsViewDetail(boolean)
+            setTicketByNote(ticket)
         }else{
-            setReadNote(boolean)
-            setDataTicket(ticket.filter(item => item.id === id) )
+            setIsViewDetail(boolean)
+            setTicketByNote(ticket.filter(item => item.id === id) )
         } 
     }
 
-    const renderedHistory = dataTicket.map((item, index) => {
+    const renderedHistory = ticketByNote.map((item, index) => {
         return (
             <tr key={index} className='border-2'>
                 {
-                    readNote ?
+                    isViewDetail ?
                     (
                         <>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -59,7 +59,7 @@ const TicketHistory = ({ ticket }) => {
                                     className="text-indigo-600 hover:text-indigo-900"
                                     onClick={() => handleReadNote(false, item.id)}
                                 >
-                                    Read
+                                    Detail
                                 </button>
                             </td>
                         </>
@@ -67,6 +67,19 @@ const TicketHistory = ({ ticket }) => {
                     (
                         <>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                <div className='flex flex-row font-light italic mb-2'>
+                                    <div className='flex-col w-full'>
+                                        {   
+                                            item.onduty && item.onduty.map((item, index) => {
+                                                return (
+                                                    <div key={index} className="text-sm text-gray-900">{item}</div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                    <div className='w-full'>{item.status}</div>
+                                    <div className='w-full'>{moment(item.date).format('D-M-YYYY, H:mm')}</div>
+                                </div>
                                 {item.note}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap flex justify-end text-sm font-medium space-x-2">
@@ -89,7 +102,7 @@ const TicketHistory = ({ ticket }) => {
             <thead className="bg-gray-50">
                 <tr>
                     {   
-                        readNote ?
+                        isViewDetail ?
                         (
                             <>
                                 <th
@@ -110,11 +123,8 @@ const TicketHistory = ({ ticket }) => {
                                 >
                                     Status
                                 </th>
-                                <th
-                                    scope="col"
-                                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "
-                                >
-                                    Note
+                                <th scope="col" className="relative px-6 py-3">
+                                    <span className="sr-only">Action</span>
                                 </th>
                             </>
                         ) :
@@ -124,7 +134,7 @@ const TicketHistory = ({ ticket }) => {
                                     scope="col"
                                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "
                                 >
-                                    Note
+                                    Detail
                                 </th>
                                 <th scope="col" className="relative px-6 py-3">
                                     <span className="sr-only">Action</span>
