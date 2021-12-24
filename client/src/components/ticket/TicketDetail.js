@@ -2,9 +2,9 @@ import React, { Fragment } from 'react'
 import moment from 'moment'
 import TicketHistory from './TicketHistory'
 
-const TicketDetail = ({ ticket }) => {
+const TicketDetail = ({ ticketById }) => {
 
-    const renderedDetail = ticket.map(item => {
+    const renderedDetail = ticketById.map(item => {
         return (
                 <Fragment key={item.id}>
                     <div className='flex flex-row w-full'>
@@ -52,6 +52,9 @@ const TicketDetail = ({ ticket }) => {
                     <div className='flex flex-row w-full'>
                         <p className='w-full'>Priority:</p>
                         <p className='w-full font-medium'>{item.priority}</p>
+                    </div>
+                    <div className='flex w-full'>
+                        <p className='w-full'>History:</p>
                     </div>
                     <TicketHistory ticket={item.history}/>
                 </Fragment>
