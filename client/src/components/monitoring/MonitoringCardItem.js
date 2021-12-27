@@ -46,7 +46,8 @@ const CardItem = ({ data }) => {
                     { 'h-10%' : Math.floor(parseInt(data.use)) >= parseInt('80%') && Math.floor(parseInt(data.use)) <= parseInt('90%') },
                     { 'h-0%' : Math.floor(parseInt(data.use)) >= parseInt('90%') && Math.floor(parseInt(data.use)) <= parseInt('99%') },
                     { 'h-0%' : Math.floor(parseInt(data.use)) >= parseInt('99%') && Math.floor(parseInt(data.use)) <= parseInt('100%') },
-                )}></div>
+                    )}
+                ></div>
                 <div className={classnames('absolute z-10 h-full w-full', 
                     { 'bg-red-500' : Math.floor(parseInt(data.use)) >= parseInt('79%') && Math.floor(parseInt(data.use)) <= parseInt('100%') },
                     { 'bg-blue-500' : Math.floor(parseInt(data.use)) >= parseInt('0%') && Math.floor(parseInt(data.use)) <= parseInt('79%') },

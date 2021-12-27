@@ -5,7 +5,14 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getSavedDiskPath, getMappingDisk } from '../../actions/disk'
 
-const Monitoring = ({ getSavedDiskPath, getMappingDisk, disk: { savedDisk, mappingDisk } }) => {
+const Monitoring = ({ 
+    getSavedDiskPath, 
+    getMappingDisk, 
+    disk:{ 
+        savedDisk, 
+        mappingDisk 
+    } 
+}) => {
 
     useEffect(() => {
         getSavedDiskPath()
