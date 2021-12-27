@@ -42,15 +42,17 @@ const TicketHistory = ({ ticket }) => {
                                 </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                                <span className={classnames("px-2 inline-flex text-xs leading-5 font-semibold rounded-full capitalize", 
-                                    { 'bg-yellow-200 text-yellow-800' : item.status === 'open' },
-                                    { 'bg-blue-200 text-blue-800' : item.status === 'in progress' },
-                                    { 'bg-red-200 text-red-800' : item.status === 'pending' },
-                                    { 'bg-pink-200 text-pink-800' : item.status === 'on hold' },
-                                    { 'bg-purple-200 text-purple-800' : item.status === 'escalated' },
-                                    { 'bg-green-200 text-green-800' : item.status === 'solved' },
-                                    { 'bg-gray-200 text-gray-800' : item.status === 'closed' },
-                                )}>
+                                <span 
+                                    className={classnames("px-2 inline-flex text-xs leading-5 font-semibold rounded-full capitalize", 
+                                        { 'bg-yellow-200 text-yellow-800' : item.status === 'open' },
+                                        { 'bg-blue-200 text-blue-800' : item.status === 'in progress' },
+                                        { 'bg-red-200 text-red-800' : item.status === 'pending' },
+                                        { 'bg-pink-200 text-pink-800' : item.status === 'on hold' },
+                                        { 'bg-purple-200 text-purple-800' : item.status === 'escalated' },
+                                        { 'bg-green-200 text-green-800' : item.status === 'solved' },
+                                        { 'bg-gray-200 text-gray-800' : item.status === 'closed' },
+                                    )}
+                                >
                                     {item.status}
                                 </span>
                             </td>
@@ -78,7 +80,9 @@ const TicketHistory = ({ ticket }) => {
                                         }
                                     </div>
                                     <div className='w-full'>{item.status}</div>
-                                    <div className='w-full'>{moment(item.date).format('D-M-YYYY, H:mm')}</div>
+                                    <div className='w-full'>
+                                        {moment(item.date).format('D-M-YYYY, H:mm')}
+                                    </div>
                                 </div>
                                 {item.note}
                             </td>

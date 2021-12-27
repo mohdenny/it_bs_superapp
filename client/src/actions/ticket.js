@@ -47,6 +47,8 @@ export const getTicketById = id => async dispatch => {
 
 //  get ticket by STATUS
 export const getTicketByStatus = status => async dispatch => {
+    dispatch({ type: CLEAR_TICKET })
+
     try {
         const res = await dataTicket
 

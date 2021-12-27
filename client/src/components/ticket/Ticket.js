@@ -12,13 +12,23 @@ const initialState = {
     modal: {detail: false, form: false}
 }
 
-const Ticket = ({ getTickets, getTicketById, getTicketByStatus, state = initialState, ticket: { tickets, ticket, filteredTicketsByStatus } }) => {
-    const [ isActiveButton, setIsActiveButton ] = useState()
-    // const [ listTicket, setListTicket ] = useState(tickets)
+const Ticket = ({ 
+    getTickets, 
+    getTicketById, 
+    getTicketByStatus, 
+    state = initialState, 
+    ticket: { 
+        tickets, 
+        ticket, 
+        ticketToCount 
+    }
+}) => {
+
+    const [ isActiveFilterStatus, setIsActiveFilterStatus ] = useState()
     const [ callModal, setCallModal ] = useState(state.modal)
 
-    const countTicketByTerm = (term) => {
-        let count = tickets.filter(item => item.status === term)
+    const countTicketByStatus = (data, status) => {
+        let count = data.filter(item => item.status === status)
         return count.length
     }
 
@@ -32,28 +42,33 @@ const Ticket = ({ getTickets, getTicketById, getTicketByStatus, state = initialS
     }
 
     const handleButtonFilterByStatus = async (status) => {
-        setIsActiveButton(status)
+        setIsActiveFilterStatus(status)
 
         if(!status){
             getTickets()
         } else {
-            getTicketByStatus(status)
+            getTicketByStatus(isActiveFilterStatus)
         }
     }
 
     useEffect(() => {
-        getTickets()
-        
-    }, [getTickets])
+
+        if(!isActiveFilterStatus){
+            getTickets()
+        }else{
+            getTicketByStatus(isActiveFilterStatus)
+        }
+
+    }, [getTickets, isActiveFilterStatus, getTicketByStatus])
 
     return (
         <>
             <div className='relative z-0 space-y-4 h-full w-full'>
                 <TicketBar 
-                    tickets={tickets}
-                    countTicketByTerm={countTicketByTerm}
+                    ticketToCount={ticketToCount}
+                    countTicketByStatus={countTicketByStatus}
                     handleCallModal={handleCallModal} 
-                    isActiveButton={isActiveButton} 
+                    isActiveFilterStatus={isActiveFilterStatus} 
                     handleButtonFilterByStatus={handleButtonFilterByStatus}
                 />
                 <div className="flex flex-col">
@@ -99,7 +114,7 @@ const Ticket = ({ getTickets, getTicketById, getTicketByStatus, state = initialS
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        <TicketList filteredTicketsByStatus={filteredTicketsByStatus} handleCallModal={handleCallModal} />
+                                        <TicketList tickets={tickets} handleCallModal={handleCallModal} />
                                     </tbody>
                                 </table>
                             </div>
@@ -126,6 +141,7 @@ const Ticket = ({ getTickets, getTicketById, getTicketByStatus, state = initialS
         </>
     )
 }
+
 Ticket.propTypes = {
     getTickets: PropTypes.func.isRequired,
     getTicketById: PropTypes.func.isRequired,
@@ -137,4 +153,10 @@ const mapStateToProps = state => ({
     ticket: state.ticket
 })
 
-export default connect(mapStateToProps, { getTickets, getTicketById, getTicketByStatus })(Ticket)
+export default connect(
+    mapStateToProps, 
+    { 
+        getTickets, 
+        getTicketById, 
+        getTicketByStatus 
+    })(Ticket)

@@ -8,7 +8,7 @@ import {
 
 const initialState = {
     tickets: [],
-    filteredTicketsByStatus: [],
+    ticketToCount: [],
     ticket: null,
     loading: true,
     error: {}
@@ -22,7 +22,7 @@ const ticketReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tickets: payload,
-                filteredTicketsByStatus: payload,
+                ticketToCount: payload,
                 loading: false
             }
         case GET_TICKET:
@@ -34,7 +34,7 @@ const ticketReducer = (state = initialState, action) => {
         case GET_TICKET_BY_STATUS:
             return {
                 ...state,
-                filteredTicketsByStatus: payload,
+                tickets: payload,
                 loading: false
             }
         case TICKET_ERROR:

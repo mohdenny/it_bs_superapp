@@ -1,7 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 
-const TicketBar = ({ tickets, countTicketByTerm, handleCallModal, isActiveButton, handleButtonFilterByStatus }) => {
+const TicketBar = ({ 
+    ticketToCount, 
+    countTicketByStatus, 
+    handleCallModal, 
+    isActiveFilterStatus, 
+    handleButtonFilterByStatus 
+}) => {
+
     return (
         <div className='flex flex-col items-center justify-center py-4 bg-white h-auto w-full '>
             <div className='flex flex-row items-center justify-center h-12 space-x-4 w-full py-2'>
@@ -24,7 +31,7 @@ const TicketBar = ({ tickets, countTicketByTerm, handleCallModal, isActiveButton
             <div className='flex flex-row items-center justify-center h-12 space-x-4 w-full'>
                 <button 
                     className={classnames('bg-white text-gray-800 px-4 py-1 border-2  rounded-xl hover:bg-gray-300', {
-                    'bg-gray-300 text-gray-900 font-bold shadow-md' : !isActiveButton
+                    'bg-gray-300 text-gray-900 font-bold shadow-md' : !isActiveFilterStatus
                     })} 
                     onClick={() => handleButtonFilterByStatus()}
                 >
@@ -32,59 +39,59 @@ const TicketBar = ({ tickets, countTicketByTerm, handleCallModal, isActiveButton
                 </button>
                 <button 
                     className={classnames('bg-yellow-200 text-yellow-800 px-4 py-1 rounded-xl hover:bg-yellow-300', {
-                    'bg-yellow-300 text-yellow-900 font-bold shadow-md' : isActiveButton === 'open'
+                    'bg-yellow-300 text-yellow-900 font-bold shadow-md' : isActiveFilterStatus === 'open'
                     })} 
                     onClick={() => handleButtonFilterByStatus('open')}
                 >   
-                    Open { tickets && <sup>{`${countTicketByTerm('open')}`}</sup> }
+                    Open { ticketToCount && <sup>{`${countTicketByStatus(ticketToCount, 'open')}`}</sup> }
                 </button>
                 <button 
                     className={classnames('bg-blue-200 text-blue-800 px-4 py-1 rounded-xl hover:bg-blue-300', {
-                    'bg-blue-300 text-blue-900 font-bold shadow-md' : isActiveButton === 'in progress'
+                    'bg-blue-300 text-blue-900 font-bold shadow-md' : isActiveFilterStatus === 'in progress'
                     })} 
                     onClick={() => handleButtonFilterByStatus('in progress')}
                 >   
-                    In Progress { tickets && <sup>{`${countTicketByTerm('in progress')}`}</sup> }
+                    In Progress { ticketToCount && <sup>{`${countTicketByStatus(ticketToCount, 'in progress')}`}</sup> }
                 </button>
                 <button 
                     className={classnames('bg-red-200 text-red-800 px-4 py-1 rounded-xl hover:bg-red-300', {
-                    'bg-red-300 text-red-900 font-bold shadow-md' : isActiveButton === 'pending'
+                    'bg-red-300 text-red-900 font-bold shadow-md' : isActiveFilterStatus === 'pending'
                     })} 
                     onClick={() => handleButtonFilterByStatus('pending')}
                 >   
-                    Pending { tickets && <sup>{`${countTicketByTerm('pending')}`}</sup> }
+                    Pending { ticketToCount && <sup>{`${countTicketByStatus(ticketToCount, 'pending')}`}</sup> }
                 </button>
                 <button 
                     className={classnames('bg-pink-200 text-pink-800 px-4 py-1 rounded-xl hover:bg-pink-300', {
-                    'bg-pink-300 text-pink-900 font-bold shadow-md' : isActiveButton === 'on hold'
+                    'bg-pink-300 text-pink-900 font-bold shadow-md' : isActiveFilterStatus === 'on hold'
                     })} 
                     onClick={() => handleButtonFilterByStatus('on hold')}
                 >   
-                    On Hold { tickets && <sup>{`${countTicketByTerm('on hold')}`}</sup> }
+                    On Hold { ticketToCount && <sup>{`${countTicketByStatus(ticketToCount, 'on hold')}`}</sup> }
                 </button>
                 <button 
                     className={classnames('bg-purple-200 text-purple-800 px-4 py-1 rounded-xl hover:bg-purple-300', {
-                    'bg-purple-300 text-purple-900 font-bold shadow-md' : isActiveButton === 'escalated'
+                    'bg-purple-300 text-purple-900 font-bold shadow-md' : isActiveFilterStatus === 'escalated'
                     })} 
                     onClick={() => handleButtonFilterByStatus('escalated')}
                 >   
-                    Escalated { tickets && <sup>{`${countTicketByTerm('escalated')}`}</sup> }
+                    Escalated { ticketToCount && <sup>{`${countTicketByStatus(ticketToCount, 'escalated')}`}</sup> }
                 </button>
                 <button 
                     className={classnames('bg-green-200 text-green-800 px-4 py-1 rounded-xl hover:bg-green-300', {
-                    'bg-green-300 text-green-900 font-bold shadow-md' : isActiveButton === 'solved'
+                    'bg-green-300 text-green-900 font-bold shadow-md' : isActiveFilterStatus === 'solved'
                     })} 
                     onClick={() => handleButtonFilterByStatus('solved')}
                 >   
-                    Solved { tickets && <sup>{`${countTicketByTerm('solved')}`}</sup> }
+                    Solved { ticketToCount && <sup>{`${countTicketByStatus(ticketToCount, 'solved')}`}</sup> }
                 </button>
                 <button 
                     className={classnames('bg-gray-200 text-gray-800 px-4 py-1 rounded-xl hover:bg-gray-300', {
-                    'bg-gray-300 text-gray-900 font-bold shadow-md' : isActiveButton === 'closed'
+                    'bg-gray-300 text-gray-900 font-bold shadow-md' : isActiveFilterStatus === 'closed'
                     })} 
                     onClick={() => handleButtonFilterByStatus('closed')}
                 >   
-                    Closed { tickets && <sup>{`${countTicketByTerm('closed')}`}</sup> }
+                    Closed { ticketToCount && <sup>{`${countTicketByStatus(ticketToCount, 'closed')}`}</sup> }
                 </button>
             </div>
         </div>
