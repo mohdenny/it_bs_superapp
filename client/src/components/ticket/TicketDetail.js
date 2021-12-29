@@ -58,7 +58,7 @@ const TicketDetail = ({ ticketById }) => {
                 <div className='flex w-full'>
                     <p className='w-full'>History:</p>
                 </div>
-                <TicketHistory ticket={item.history}/>
+                { <TicketHistory ticket={item.history}/> }
             </Fragment>
         )
     })
