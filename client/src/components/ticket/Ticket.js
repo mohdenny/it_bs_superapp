@@ -8,15 +8,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getTickets, getTicketById, getTicketByStatus } from '../../actions/ticket'
 
-const initialState = {
-    modal: {detail: false, form: false}
-}
-
 const Ticket = ({ 
     getTickets, 
     getTicketById, 
     getTicketByStatus, 
-    state = initialState, 
     ticket: { 
         tickets, 
         ticket, 
@@ -25,7 +20,7 @@ const Ticket = ({
 }) => {
 
     const [ isActiveFilterStatus, setIsActiveFilterStatus ] = useState()
-    const [ callModal, setCallModal ] = useState(state.modal)
+    const [ callModal, setCallModal ] = useState({detail: false, form: false})
 
     const countTicketByStatus = (data, status) => {
         let count = data.filter(item => item.status === status)
@@ -35,9 +30,9 @@ const Ticket = ({
     const handleCallModal = (modal, id = null)  => {
         if( id !== null && modal === 'modal-detail' ){
             getTicketById(id)
-            setCallModal({...state, detail: 'true'})
+            setCallModal( prevState => ({...prevState , detail: 'true' }))
         } else {
-            setCallModal({...state, form: 'true'})
+            setCallModal( prevState => ({...prevState , form: 'true'}))
         }
     }
 
@@ -125,15 +120,15 @@ const Ticket = ({
             { 
                 callModal.form && 
                     ( 
-                        <Modal ticket={ticket} setCallModal={setCallModal}>
-                            <TicketForm ticketById={ticket}/>
+                        <Modal title={'Create new ticket'} modal={'modal-form'} setCallModal={setCallModal}>
+                            <TicketForm />
                         </Modal> 
                     )
             }
             { 
                 ticket && callModal.detail &&
                     ( 
-                        <Modal ticket={ticket} setCallModal={setCallModal}>
+                        <Modal title={ticket} modal={'modal-detail'} setCallModal={setCallModal}>
                             <TicketDetail ticketById={ticket} />
                         </Modal>
                     )
