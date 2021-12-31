@@ -21,6 +21,7 @@ const Ticket = ({
 
     const [ isActiveFilterStatus, setIsActiveFilterStatus ] = useState()
     const [ callModal, setCallModal ] = useState({detail: false, form: false})
+    const [ nameModal, setNameModal ] = useState()
 
     const countTicketByStatus = (data, status) => {
         let count = data.filter(item => item.status === status)
@@ -29,9 +30,11 @@ const Ticket = ({
 
     const handleCallModal = (modal, id = null)  => {
         if( id !== null && modal === 'modal-detail' ){
+            setNameModal(modal)
             getTicketById(id)
             setCallModal( prevState => ({...prevState , detail: 'true' }))
         } else {
+            setNameModal(modal)
             setCallModal( prevState => ({...prevState , form: 'true'}))
         }
     }
@@ -120,7 +123,7 @@ const Ticket = ({
             { 
                 callModal.form && 
                     ( 
-                        <Modal title={'Create new ticket'} modal={'modal-form'} setCallModal={setCallModal}>
+                        <Modal title={'Create new ticket'} nameModal={nameModal} setCallModal={setCallModal}>
                             <TicketForm />
                         </Modal> 
                     )
@@ -128,7 +131,7 @@ const Ticket = ({
             { 
                 ticket && callModal.detail &&
                     ( 
-                        <Modal title={ticket} modal={'modal-detail'} setCallModal={setCallModal}>
+                        <Modal title={ticket} nameModal={nameModal} setCallModal={setCallModal}>
                             <TicketDetail ticketById={ticket} />
                         </Modal>
                     )
