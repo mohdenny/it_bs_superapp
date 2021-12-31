@@ -30,10 +30,9 @@ const Monitoring = ({
                                     mappingDisk && mappingDisk.filter(filterdisk => filterdisk.mount === `${item.path}:`)
                                         .map((item, index) => {
                                             return (
-                                                    <MonitoringCardItem key={index} data={item} />
-                                                )
-                                            }
-                                        )
+                                                <MonitoringCardItem key={index} data={item} /> 
+                                            )
+                                        })
                                 }
                             </MonitoringCard>
                         )
