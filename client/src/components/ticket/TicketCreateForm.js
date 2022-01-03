@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import FormContainer from '../form/FormContainer'
 import FormControl from '../form/FormControl'
 
-const TicketForm = () => {
+const TicketCreateForm = () => {
     const departmentOptions = [
         { key: 'Select an option', value: '' },
         { key: 'Option 1', value: 'option1' },
@@ -104,7 +104,7 @@ const TicketForm = () => {
                                         options={statusOptions}
                                     />
                                 </div>
-                                <div className='flex justify-end mb-4'>
+                                <div className='flex justify-end mb-2'>
                                     <button 
                                         className={classnames('bg-blue-400 py-1 px-4 rounded-xl text-white hover:bg-blue-500',
                                         { 'bg-yellow-300 hover:bg-yellow-300' : !formik.isValid || formik.isSubmitting },
@@ -124,4 +124,4 @@ const TicketForm = () => {
     )
 }
 
-export default TicketForm
+export default TicketCreateForm

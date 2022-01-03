@@ -12,7 +12,7 @@ const Textarea = (props) => {
             </label>
             <Field 
                 as='textarea' 
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-gray-500 focus:shadow-outline" 
                 rows={5} 
                 id={name} 
                 name={name} 

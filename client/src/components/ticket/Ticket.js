@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Modal from '../modal/Modal'
 import TicketBar from './TicketBar'
 import TicketList from './TicketList'
-import TicketForm from './TicketForm'
+import TicketCreateForm from './TicketCreateForm'
+import TicketEditForm from './TicketEditForm'
 import TicketDetail from './TicketDetail'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -20,7 +21,7 @@ const Ticket = ({
 }) => {
 
     const [ isActiveFilterStatus, setIsActiveFilterStatus ] = useState()
-    const [ callModal, setCallModal ] = useState({detail: false, form: false})
+    const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
 
     const countTicketByStatus = (data, status) => {
@@ -29,23 +30,23 @@ const Ticket = ({
     }
 
     const handleCallModal = (modal, id = null)  => {
-        if( id !== null && modal === 'modal-detail' ){
-            setNameModal(modal)
-            getTicketById(id)
-            setCallModal( prevState => ({...prevState , detail: 'true' }))
-        } else {
-            setNameModal(modal)
-            setCallModal( prevState => ({...prevState , form: 'true'}))
-        }
-    }
-
-    const handleButtonFilterByStatus = async (status) => {
-        setIsActiveFilterStatus(status)
-
-        if(!status){
-            getTickets()
-        } else {
-            getTicketByStatus(isActiveFilterStatus)
+        switch(modal){
+            case 'modal-detail':
+                setNameModal(modal)
+                getTicketById(id)
+                setCallModal( prevState => ({...prevState , detail: 'true' }))
+                break
+            case 'modal-create-form':
+                setNameModal(modal)
+                setCallModal( prevState => ({...prevState , create: 'true'}))
+                break
+            case 'modal-edit-form':
+                setNameModal(modal)
+                getTicketById(id)
+                setCallModal( prevState => ({...prevState , edit: 'true' }))
+                break
+            default:
+                return null
         }
     }
 
@@ -67,7 +68,7 @@ const Ticket = ({
                     countTicketByStatus={countTicketByStatus}
                     handleCallModal={handleCallModal} 
                     isActiveFilterStatus={isActiveFilterStatus} 
-                    handleButtonFilterByStatus={handleButtonFilterByStatus}
+                    setIsActiveFilterStatus={setIsActiveFilterStatus}
                 />
                 <div className="flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -121,10 +122,18 @@ const Ticket = ({
                 </div>
             </div>
             { 
-                callModal.form && 
+                callModal.create && 
                     ( 
                         <Modal title={'Create new ticket'} nameModal={nameModal} setCallModal={setCallModal}>
-                            <TicketForm />
+                            <TicketCreateForm />
+                        </Modal> 
+                    )
+            }
+            { 
+                ticket && callModal.edit && 
+                    ( 
+                        <Modal title={'Update ticket'} nameModal={nameModal} setCallModal={setCallModal}>
+                            <TicketEditForm ticketById={ticket}/>
                         </Modal> 
                     )
             }

@@ -59,7 +59,7 @@ const TicketHistory = ({ ticket }) => {
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                                 <button 
                                     className="text-indigo-600 hover:text-indigo-900"
-                                    onClick={() => handleReadNote(false, item.id)}
+                                    onClick={() => handleReadNote(!isViewDetail, item.id)}
                                 >
                                     Detail
                                 </button>
@@ -89,7 +89,7 @@ const TicketHistory = ({ ticket }) => {
                             <td className="px-6 py-4 whitespace-nowrap flex justify-end text-sm font-medium space-x-2">
                                 <button 
                                     className="text-indigo-600 hover:text-indigo-900"
-                                    onClick={() => handleReadNote(true, item.id)}
+                                    onClick={() => handleReadNote(!isViewDetail, item.id)}
                                 >
                                     Back
                                 </button>
