@@ -5,27 +5,27 @@ import classnames from 'classnames'
 import FormContainer from '../form/FormContainer'
 import FormControl from '../form/FormControl'
 
+const ondutyOptions = [
+    { key: 'Select an option', value: '' },
+    { key: 'Option 1', value: 'option1' },
+    { key: 'Option 2', value: 'option2' },
+    { key: 'Option 3', value: 'option3' }
+]
+
+const statusOptions = [
+    { key: 'Select an option', value: '' },
+    { key: 'Option 1', value: 'option1' },
+    { key: 'Option 2', value: 'option2' },
+    { key: 'Option 3', value: 'option3' }
+]
+
+const initialValues = {
+    onduty: '',
+    note: '',
+    status: ''
+}
+
 const TicketEditForm = ({ ticketById }) => {
-    const ondutyOptions = [
-        { key: 'Select an option', value: '' },
-        { key: 'Option 1', value: 'option1' },
-        { key: 'Option 2', value: 'option2' },
-        { key: 'Option 3', value: 'option3' }
-    ]
-
-    const statusOptions = [
-        { key: 'Select an option', value: '' },
-        { key: 'Option 1', value: 'option1' },
-        { key: 'Option 2', value: 'option2' },
-        { key: 'Option 3', value: 'option3' }
-    ]
-
-    const initialValues = {
-        onduty: '',
-        note: '',
-        status: ''
-    }
-
     const validationSchema = Yup.object({
         onduty: Yup.string().required('Required'),
         note: Yup.string().required('Required'),

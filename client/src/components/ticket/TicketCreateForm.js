@@ -5,44 +5,44 @@ import classnames from 'classnames'
 import FormContainer from '../form/FormContainer'
 import FormControl from '../form/FormControl'
 
+const departmentOptions = [
+    { key: 'Select an option', value: '' },
+    { key: 'Option 1', value: 'option1' },
+    { key: 'Option 2', value: 'option2' },
+    { key: 'Option 3', value: 'option3' }
+]
+
+const ondutyOptions = [
+    { key: 'Select an option', value: '' },
+    { key: 'Option 1', value: 'option1' },
+    { key: 'Option 2', value: 'option2' },
+    { key: 'Option 3', value: 'option3' }
+]
+
+const statusOptions = [
+    { key: 'Select an option', value: '' },
+    { key: 'Option 1', value: 'option1' },
+    { key: 'Option 2', value: 'option2' },
+    { key: 'Option 3', value: 'option3' }
+]
+
+const priorityOptions = [
+    { key: 'Select an option', value: '' },
+    { key: 'Option 1', value: 'option1' },
+    { key: 'Option 2', value: 'option2' },
+    { key: 'Option 3', value: 'option3' }
+]
+
+const initialValues = {
+    department: '',
+    subject: '',
+    problem: '',
+    onduty: '',
+    priority: '',
+    status: ''
+}
+
 const TicketCreateForm = () => {
-    const departmentOptions = [
-        { key: 'Select an option', value: '' },
-        { key: 'Option 1', value: 'option1' },
-        { key: 'Option 2', value: 'option2' },
-        { key: 'Option 3', value: 'option3' }
-    ]
-
-    const ondutyOptions = [
-        { key: 'Select an option', value: '' },
-        { key: 'Option 1', value: 'option1' },
-        { key: 'Option 2', value: 'option2' },
-        { key: 'Option 3', value: 'option3' }
-    ]
-
-    const statusOptions = [
-        { key: 'Select an option', value: '' },
-        { key: 'Option 1', value: 'option1' },
-        { key: 'Option 2', value: 'option2' },
-        { key: 'Option 3', value: 'option3' }
-    ]
-
-    const priorityOptions = [
-        { key: 'Select an option', value: '' },
-        { key: 'Option 1', value: 'option1' },
-        { key: 'Option 2', value: 'option2' },
-        { key: 'Option 3', value: 'option3' }
-    ]
-
-    const initialValues = {
-        department: '',
-        subject: '',
-        problem: '',
-        onduty: '',
-        priority: '',
-        status: ''
-    }
-
     const validationSchema = Yup.object({
         department: Yup.string().required('Required'),
         subject: Yup.string().max(40, 'Must be exactly 40 characters').required('Required'),
