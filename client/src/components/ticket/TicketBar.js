@@ -8,7 +8,6 @@ const TicketBar = ({
     isActiveFilterStatus, 
     setIsActiveFilterStatus 
 }) => {
-
     return (
         <div className='flex flex-col items-center justify-center py-4 bg-white h-auto w-full '>
             <div className='flex items-center justify-center h-12 space-x-4 w-full py-2'>

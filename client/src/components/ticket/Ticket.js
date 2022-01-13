@@ -19,7 +19,6 @@ const Ticket = ({
         ticketToCount 
     }
 }) => {
-
     const [ isActiveFilterStatus, setIsActiveFilterStatus ] = useState()
     const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
