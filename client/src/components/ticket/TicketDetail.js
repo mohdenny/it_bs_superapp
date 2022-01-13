@@ -3,7 +3,6 @@ import moment from 'moment'
 import TicketHistory from './TicketHistory'
 
 const TicketDetail = ({ ticketById }) => {
-
     const renderedDetail = ticketById.map(item => {
         return (
             <Fragment key={item.id}>
