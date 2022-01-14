@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import ButtonSidebar from '../button/ButtonSidebar'
+import ButtonControl from '../button/ButtonControl'
 
-const valuesSidebar = [
-    { icon: 'home', label: 'Home', path: '/dashboard' },
-    { icon: 'globe', label: 'Explore', path: '/explore' },
-    { icon: 'ticket', label: 'Ticket', path: '/ticket' },
-    { icon: 'report', label: 'Report', path: '/report' },
-    { icon: 'monitor', label: 'Monitoring', path: '/monitoring' },
-    { icon: 'check', label: 'Checklist', path: '/checklist' },
-    { icon: 'inventory', label: 'Inventory', path: '/inventory' },
-    { icon: 'setting', label: 'Setting', path: '/setting' },
+const valuesButtonSidebar = [
+    { icon: 'home', button: 'sidebar', label: 'Home', path: '/dashboard' },
+    { icon: 'globe', button: 'sidebar', label: 'Explore', path: '/explore' },
+    { icon: 'ticket', button: 'sidebar', label: 'Ticket', path: '/ticket' },
+    { icon: 'report', button: 'sidebar', label: 'Report', path: '/report' },
+    { icon: 'monitor', button: 'sidebar', label: 'Monitoring', path: '/monitoring' },
+    { icon: 'check', button: 'sidebar', label: 'Checklist', path: '/checklist' },
+    { icon: 'inventory', button: 'sidebar', label: 'Inventory', path: '/inventory' },
+    { icon: 'setting', button: 'sidebar', label: 'Setting', path: '/setting' },
 ]
 
 const Sidebar = ({ children }) => {
@@ -50,9 +50,11 @@ const Sidebar = ({ children }) => {
                             !toggleMenu &&
                             <div className="flex flex-col bg-white h-full w-64 py-4">
                                 {
-                                    valuesSidebar.map(item => {
+                                    valuesButtonSidebar.map((item, index) => {
                                         return (
-                                            <ButtonSidebar
+                                            <ButtonControl
+                                                key={index}
+                                                control={item.button}
                                                 icon={item.icon}
                                                 label={item.label}
                                                 location={location.pathname}
