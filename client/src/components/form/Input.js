@@ -2,9 +2,7 @@ import React from 'react'
 import { Field, ErrorMessage } from 'formik'
 import TextError from './TextError'
 
-const Input = (props) => {
-    const { label, name, ...rest } = props
-
+const Input = ({ label, name, ...rest }) => {
     return (
         <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={name}>
