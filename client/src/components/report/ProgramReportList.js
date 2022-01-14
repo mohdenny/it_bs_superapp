@@ -1,10 +1,7 @@
 import React from 'react'
-import classnames from 'classnames'
 import moment from 'moment'
 
 const ProgramReportList = ({ programs }) => {
-
-    console.log(programs)
     return (
         <>
             { 
