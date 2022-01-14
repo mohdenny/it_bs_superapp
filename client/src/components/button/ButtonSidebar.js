@@ -1,13 +1,26 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import classnames from 'classnames'
 import IconControl from '../icon/IconControl'
-import ButtonLinkSidebar from './ButtonLinkSidebar'
 
-const ButtonSidebar = ({ location, ...rest }) => {
+const ButtonSidebar = ({ location, path, label, ...rest }) => {
 
     return (
-        <ButtonLinkSidebar location={location} {...rest}>
+        <Link 
+            className={classnames(`hover:bg-gray-200 h-10 w-full flex px-8 space-x-4 content-center`, {
+                'bg-gray-300' : location === path
+            })}
+            to={path}
+            aria-current="page"
+        >
             <IconControl location={location} {...rest}/>
-        </ButtonLinkSidebar>
+
+            <button className={classnames("h-full w-auto", {
+                'font-bold' : location === path
+            })}>
+                {label}
+            </button>
+        </Link>
     )
 }
 
