@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { HiMenu, HiUserCircle } from 'react-icons/hi'
 import ButtonControl from '../button/ButtonControl'
+
+const logo = {
+    text: 'IT BROADCAST',
+    desc: 'Management System'
+}
 
 const valuesButtonSidebar = [
     { icon: 'home', button: 'sidebar', label: 'Home', path: '/dashboard' },
@@ -19,28 +25,24 @@ const Sidebar = ({ children }) => {
 
     return (
         <>
-            <div className="flex flex-col font-roboto h-screen">
-                <nav className="bg-white px-8 py-1 flex items-center justify-between h-12 w-full">
-                    <div className="flex flex-row space-x-8 h-full">
-                        <button className="h-full" onClick={() => setToggleMenu(!toggleMenu)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-full w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
+            <div className="flex flex-col font-poppins-regular h-screen">
+                <nav className="bg-white px-8 py-1 flex items-center justify-between h-20 w-full">
+                    <div className="flex flex-row space-x-8 h-11">
+                        <button className="h-11 w-11 flex items-center justify-center" onClick={() => setToggleMenu(!toggleMenu)}>
+                            <HiMenu className='h-6 w-full'/>
                         </button>
                         <div className="flex flex-row space-x-2 items-center justify-center w-full h-full">
                             <img src={'/images/logo-metrotv.png'} alt='metrotv' className='object-contain object-center h-full w-auto' />
                             <div className='flex flex-col justify-center h-full'>
-                                <p className="font-extrabold text-2xl italic font-chakra-petch">IT BROADCAST</p>
-                                <p className="font-light text-xs font-roboto">Management System</p>
+                                <p className="font-extrabold text-2xl italic font-poppins-bold">{logo.text}</p>
+                                <p className="font-light text-xs font-poppins-regular">{logo.desc}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="flex flex-row space-x-4 h-full">
-                        <p className="h-full w-auto flex items-center justify-center">Mohdenny</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-full w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                    <div className="flex flex-row space-x-1 items-center justify-center h-full">
+                        <p>Mohdenny</p>
+                        <HiUserCircle className='h-6 w-11'/>
                     </div>
                 </nav>
                 
@@ -48,7 +50,7 @@ const Sidebar = ({ children }) => {
                     <div className='flex flex-row h-full w-full'>
                         {
                             !toggleMenu &&
-                            <div className="flex flex-col bg-white h-full w-64 py-4">
+                            <div className="flex flex-col bg-white space-y-2 h-auto w-64 py-4">
                                 {
                                     valuesButtonSidebar.map((item, index) => {
                                         return (
