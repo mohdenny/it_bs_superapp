@@ -20,8 +20,10 @@ module.exports = {
         '100%': '100%'
       },
       fontFamily: {
-        'chakra-petch': ['Chakra Petch'],
-        'roboto' : ['Roboto']
+        'poppins-bold': ['Poppins Bold'], 
+        'poppins-medium': ['Poppins Medium'], 
+        'poppins-regular': ['Poppins Regular'], 
+        'poppins-semibold': ['Poppins SemiBold'],
       }
     },
   },
