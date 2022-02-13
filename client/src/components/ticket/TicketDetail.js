@@ -8,37 +8,37 @@ const TicketDetail = ({ ticketById }) => {
             <Fragment key={item.id}>
                 <div className='flex flex-row w-full'>
                     <p className='w-full'>Ticket Created By:</p>
-                    <p className='w-full font-medium'>{item.name}</p>
+                    <p className='w-full font-semibold'>{item.name}</p>
                 </div>
                 <div className='flex flex-row w-full'>
                     <p className='w-full'>Ticket Created Date:</p>
-                    <p className='w-full font-medium'>
+                    <p className='w-full font-semibold'>
                         {moment(item.date).format('D-M-YYYY, H:mm')}
                     </p>
                 </div>
                 <div className='flex flex-row w-full'>
                     <p className='w-full'>Ticket ID:</p>
-                    <p className='w-full font-medium'>{item.id}</p>
+                    <p className='w-full font-semibold'>{item.id}</p>
                 </div>
                 <div className='flex flex-row w-full'>
                     <p className='w-full'>Subject:</p>
-                    <p className='w-full font-medium'>{item.subject}</p>
+                    <p className='w-full font-semibold'>{item.subject}</p>
                 </div>
                 <div className='flex flex-row w-full'>
                     <p className='w-full'>User Department:</p>
-                    <p className='w-full font-medium'>{item.department}</p>
+                    <p className='w-full font-semibold'>{item.department}</p>
                 </div>
                 <div className='flex flex-row w-full'>
                     <p className='w-full'>Problem:</p>
-                    <p className='w-full font-medium'>{item.problem}</p>
+                    <p className='w-full font-semibold'>{item.problem}</p>
                 </div>
                 <div className='flex flex-row w-full'>
                     <p className='w-full'>Solution:</p>
-                    <p className='w-full font-medium'>{item.solution}</p>
+                    <p className='w-full font-semibold'>{item.solution}</p>
                 </div>
                 <div className='flex flex-row w-full'>
                     <p className='w-full'>Onduty:</p>
-                    <div className='flex font-medium flex-col w-full'>
+                    <div className='flex font-semibold flex-col w-full'>
                         { 
                             item.onduty.map((onduty, index) => {
                                 return <p key={index} className='w-full'>{onduty}</p>
@@ -48,11 +48,11 @@ const TicketDetail = ({ ticketById }) => {
                 </div>
                 <div className='flex flex-row w-full'>
                     <p className='w-full'>Last Status:</p>
-                    <p className='w-full font-medium'>{item.status}</p>
+                    <p className='w-full font-semibold'>{item.status}</p>
                 </div>
                 <div className='flex flex-row w-full'>
                     <p className='w-full'>Priority:</p>
-                    <p className='w-full font-medium'>{item.priority}</p>
+                    <p className='w-full font-semibold'>{item.priority}</p>
                 </div>
                 <div className='flex w-full'>
                     <p className='w-full'>History:</p>
