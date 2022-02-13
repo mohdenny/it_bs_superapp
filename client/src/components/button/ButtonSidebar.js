@@ -7,19 +7,14 @@ const ButtonSidebar = ({ location, path, label, ...rest }) => {
 
     return (
         <Link 
-            className={classnames(`hover:bg-gray-200 h-10 w-full flex px-8 space-x-4 content-center`, {
-                'bg-gray-300' : location === path
+            className={classnames(`hover:bg-gray-200 h-11 w-full flex items-center px-7 space-x-1 text-sm`, {
+                'bg-gray-300 font-bold' : location === path
             })}
             to={path}
             aria-current="page"
         >
-            <IconControl location={location} {...rest}/>
-
-            <button className={classnames("h-full w-auto", {
-                'font-bold' : location === path
-            })}>
-                {label}
-            </button>
+            <IconControl location={location} path={path} {...rest}/>
+            <p>{label}</p>
         </Link>
     )
 }
