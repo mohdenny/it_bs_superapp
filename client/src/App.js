@@ -7,7 +7,7 @@ import Routes from './components/routing/Routes'
 import { Provider } from 'react-redux'
 import store from './store'
 
-import './assets/styles/tailwind.css';
+import './assets/tailwind.css';
 
 const App = () => {
   return (
