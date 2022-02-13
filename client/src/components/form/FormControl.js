@@ -2,7 +2,6 @@ import React from 'react'
 import Input from './Input'
 import Textarea from './Textarea'
 import Select from './Select'
-import Search from './Search'
 
 const FormControl = ({ control, ...rest }) => {
     switch(control){
@@ -12,8 +11,6 @@ const FormControl = ({ control, ...rest }) => {
             return <Textarea {...rest}/>
         case 'select':
             return <Select {...rest}/>
-        case 'search':
-            return <Search {...rest}/>
         default:
             return null
     }
