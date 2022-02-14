@@ -6,13 +6,12 @@ export const COLUMNS = [
         Footer: 'Subject',
         accessor: 'subject',
         sticky: 'left',
-        Cell: ({ row, value }) =>{
+        Cell: ({ row, value, onClick }) =>{
             return (
                 <div className='ml-4'>
                     <button 
                         className="text-sm text-gray-900 font-bold uppercase hover:text-gray-700" 
-                        // onClick={() => handleCallModal('modal-detail', original.id)}
-                        onClick={() => console.log(row.original.id)}
+                        onClick={() => onClick('modal-detail', row.original.id)}
                     >
                         {value}
                     </button>
