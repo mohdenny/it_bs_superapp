@@ -2,35 +2,33 @@ import { format } from 'date-fns'
 
 export const COLUMNS = [
     {
-        Header: 'Id',
-        Footer: 'Id',
-        accessor: 'id',
-        disableFilters: true,
-        sticky: 'left'
-    },
-    {
-        Header: 'Name',
-        Footer: 'Name',
-        accessor: 'name',
-        sticky: 'left'
-    },
-    {
-        Header: 'Date',
-        Footer: 'Date',
-        accessor: 'date',
-        Cell: ({ value }) => {
-            return format(new Date(value), 'dd/MM/yyyy')
+        Header: 'Subject',
+        Footer: 'Subject',
+        accessor: 'subject',
+        sticky: 'left',
+        Cell: ({ row, value }) =>{
+            return (
+                <div className='ml-4'>
+                    <button 
+                        className="text-sm text-gray-900 font-bold uppercase hover:text-gray-700" 
+                        // onClick={() => handleCallModal('modal-detail', original.id)}
+                        onClick={() => console.log(row.original.id)}
+                    >
+                        {value}
+                    </button>
+                </div>
+            )
         }
+    },
+    {
+        Header: 'Onduty',
+        Footer: 'Onduty',
+        accessor: 'onduty'
     },
     {
         Header: 'Department',
         Footer: 'Department',
         accessor: 'department'
-    },
-    {
-        Header: 'Subject',
-        Footer: 'Subject',
-        accessor: 'subject'
     },
     {
         Header: 'Problem',
@@ -43,18 +41,21 @@ export const COLUMNS = [
         accessor: 'solution'
     },
     {
-        Header: 'Onduty',
-        Footer: 'Onduty',
-        accessor: 'onduty'
-    },
-    {
         Header: 'Status',
         Footer: 'Status',
         accessor: 'status'
     },
     {
-        Header: '',
-        Footer: '',
+        Header: 'Date',
+        Footer: 'Date',
+        accessor: 'date',
+        Cell: ({ value }) => {
+            return format(new Date(value), 'dd/MM/yyyy')
+        }
+    },
+    {
+        Header: 'Action',
+        Footer: 'Action',
         accessor: 'action'
     },
 ]
