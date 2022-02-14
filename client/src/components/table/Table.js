@@ -3,7 +3,7 @@ import { useTable, useSortBy ,useGlobalFilter, usePagination } from 'react-table
 import { COLUMNS } from './columns'
 import { GlobalFilter } from './GlobalFilter'
 
-export const Table = ({ datas }) => {
+export const Table = ({ datas, handleCallModal }) => {
     const columns = useMemo(() => COLUMNS, [])
     const data = useMemo(() => datas, [datas])
 
@@ -75,7 +75,7 @@ export const Table = ({ datas }) => {
                                             className="px-6 py-4 whitespace-nowrap" 
                                             {...cell.getCellProps()}
                                         >
-                                            {cell.render('Cell')}
+                                            {cell.render('Cell', {onClick: handleCallModal})}
                                         </td>
                                     )
                                 })}
