@@ -22,9 +22,6 @@ const TicketBar = ({
 }) => {
     return (
         <div className='flex flex-col items-center justify-center py-4 bg-white h-auto w-full '>
-            <div className='flex items-center justify-center h-auto w-full py-2'>
-                <GlobalFilter/>
-            </div>
             <div className='flex flex-row items-center justify-center h-auto space-x-4 w-full'>
                 {
                     valuesButtonGeneral.map((item, index) => {
