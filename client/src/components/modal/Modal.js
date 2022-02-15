@@ -8,13 +8,13 @@ const Modal = ({ title, nameModal, setCallModal, children}) => {
                 return (
                     title.map(item => {
                         return (
-                            <p key={item.id} className='capitalize font-bold'>{item.subject}</p>
+                            <p key={item.id} className='capitalize font-bold text-lg'>{item.subject}</p>
                         )
                     })
                 )
             case 'modal-create-form':
             case 'modal-edit-form':
-               return <p className='capitalize font-bold'>{title}</p>
+               return <p className='capitalize font-bold text-lg'>{title}</p>
             default:
                 return null
         }
