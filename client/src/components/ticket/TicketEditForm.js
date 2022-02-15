@@ -46,11 +46,11 @@ const TicketEditForm = ({ ticketById }) => {
                             <div key={item.id} className='divide-y-reverse divide-y-2 divide-gray-200'>
                                 <div className='flex flex-row w-full'>
                                     <p className='w-full'>Ticket ID:</p>
-                                    <p className='w-full font-medium'>{item.id}</p>
+                                    <p className='w-full font-semibold'>{item.id}</p>
                                 </div>
                                 <div className='flex flex-row w-full'>
                                     <p className='w-full'>Subject:</p>
-                                    <p className='w-full font-medium'>{item.subject}</p>
+                                    <p className='w-full font-semibold'>{item.subject}</p>
                                 </div>
                             </div>
                         )
