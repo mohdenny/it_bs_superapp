@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import Modal from '../modal/Modal'
 import { Table } from '../table/Table'
+import { COLUMNSTABLE } from './TicketColumnTable'
 import TicketBar from './TicketBar'
 import TicketList from './TicketList'
 import TicketCreateForm from './TicketCreateForm'
 import TicketEditForm from './TicketEditForm'
 import TicketDetail from './TicketDetail'
+import BadgeControl from '../badge/BadgeControl'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getTickets, getTicketById, getTicketByStatus } from '../../actions/ticket'
@@ -62,7 +64,7 @@ const Ticket = ({
 
     return (
         <>
-            <div className='relative z-0 space-y-4 h-full w-full'>
+            <div className='space-y-4 h-full w-full'>
                 <TicketBar 
                     ticketToCount={ticketToCount}
                     countTicketByStatus={countTicketByStatus}
@@ -73,51 +75,9 @@ const Ticket = ({
                 <div className="flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                {/* <table className="min-w-full divide-y divide-gray-200">
-                                    <thead className="bg-gray-50">
-                                        <tr>
-                                            <th
-                                                scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider "
-                                            >
-                                                Subject
-                                            </th>
-                                            <th
-                                                scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >
-                                                Onduty
-                                            </th>
-                                            <th
-                                                scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >
-                                                Status
-                                            </th>
-                                            <th
-                                                scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >
-                                                Priority
-                                            </th>
-                                            <th
-                                                scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >
-                                                Created
-                                            </th>
-                                            <th scope="col" className="relative px-6 py-3">
-                                                <span className="sr-only">Action</span>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="bg-white divide-y divide-gray-200">
-                                        <TicketList tickets={tickets} handleCallModal={handleCallModal} />
-                                    </tbody>
-                                </table> */}
+                            <div className="shadow overflow-hidden border-b border-gray-200 py-4 bg-white sm:rounded-lg">
                                 {
-                                    tickets && <Table datas={tickets} handleCallModal={handleCallModal}/>
+                                    tickets && <Table columnsTable={COLUMNSTABLE} datas={tickets} onClick={handleCallModal} BadgeControl={BadgeControl}/>
                                 }
                             </div>
                         </div>
