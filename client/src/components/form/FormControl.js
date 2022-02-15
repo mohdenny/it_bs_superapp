@@ -2,6 +2,7 @@ import React from 'react'
 import Input from './Input'
 import Textarea from './Textarea'
 import Select from './Select'
+import { GlobalFilter } from './GlobalFilter'
 
 const FormControl = ({ control, ...rest }) => {
     switch(control){
@@ -11,6 +12,8 @@ const FormControl = ({ control, ...rest }) => {
             return <Textarea {...rest}/>
         case 'select':
             return <Select {...rest}/>
+        case 'globalfilter':
+            return <GlobalFilter {...rest}/>
         default:
             return null
     }
