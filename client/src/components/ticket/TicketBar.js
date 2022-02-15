@@ -1,6 +1,5 @@
 import React from 'react'
 import ButtonControl from '../button/ButtonControl'
-import { GlobalFilter } from '../table/GlobalFilter'
 
 const valuesButtonGeneral = [
     { name: '', control: 'general', label: 'All' },
@@ -21,7 +20,17 @@ const TicketBar = ({
     setIsActiveFilterStatus 
 }) => {
     return (
-        <div className='flex flex-col items-center justify-center py-4 bg-white h-auto w-full '>
+        <div className='flex flex-col items-center justify-center py-6 space-y-4 bg-white h-auto w-full '>
+            <div className='flex items-center justify-center h-auto w-full'>
+                <ButtonControl
+                    control='primary'
+                    label='Create New'
+                    icon='search'
+                    color='blue'
+                    textColor='white'
+                    onClick={() => handleCallModal('modal-create-form')}
+                />
+            </div>
             <div className='flex flex-row items-center justify-center h-auto space-x-4 w-full'>
                 {
                     valuesButtonGeneral.map((item, index) => {
@@ -39,14 +48,6 @@ const TicketBar = ({
                         )
                     })
                 }
-            </div>
-            <div className='flex items-center justify-center h-auto space-x-4 w-full py-2'>
-                <ButtonControl
-                    control='primary'
-                    label='Create New'
-                    icon='search'
-                    onClick={handleCallModal}
-                />
             </div>
         </div>
     )
