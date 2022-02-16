@@ -12,13 +12,7 @@ const valuesButtonGeneral = [
     { name: 'closed', control: 'general', label: 'Closed' }
 ]
 
-const TicketBar = ({ 
-    ticketToCount, 
-    countTicketByStatus, 
-    handleCallModal, 
-    isActiveFilterStatus, 
-    setIsActiveFilterStatus 
-}) => {
+const TicketBar = ({ handleCallModal, ...rest }) => {
     return (
         <div className='flex flex-col items-center justify-center py-6 space-y-4 bg-white h-auto w-full '>
             <div className='flex items-center justify-center h-auto w-full'>
@@ -40,10 +34,7 @@ const TicketBar = ({
                                 control={item.control}
                                 name={item.name}
                                 label={item.label}
-                                isActiveFilterStatus={isActiveFilterStatus}
-                                setIsActiveFilterStatus={setIsActiveFilterStatus}
-                                countTicketByStatus={countTicketByStatus}
-                                ticketToCount={ticketToCount}
+                                {...rest}
                             />
                         )
                     })
