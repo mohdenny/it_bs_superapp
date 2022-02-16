@@ -7,10 +7,13 @@ const ButtonGeneral = ({
     isActiveFilterStatus, 
     setIsActiveFilterStatus, 
     ticketToCount, 
-    countTicketByStatus, 
+    countingData, 
+    totalCount,
+    countTicketByStatus,
     onClick, 
     disabled 
 }) => {
+    // console.log(typeof countingData)
     const ticketCountButton = (
         <button 
             className={classnames('bg-white h-11 text-gray-800 px-4 py-1 border-2 rounded-xl hover:bg-gray-100', {
@@ -22,7 +25,7 @@ const ButtonGeneral = ({
 
             { 
                 ticketToCount && countTicketByStatus(ticketToCount, name) ?
-                    <sup> {countTicketByStatus(ticketToCount, name)}</sup> 
+                    <sup> { countTicketByStatus(ticketToCount, name)}</sup> 
                     : 
                     null
             }
@@ -40,6 +43,8 @@ const ButtonGeneral = ({
             {label} 
         </button>
     )
+
+    // console.log(totalCount)
 
     return (
         ticketToCount ? ticketCountButton : regularButton
