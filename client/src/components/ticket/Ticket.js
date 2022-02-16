@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import useCount from '../../hooks/useCount'
 import Modal from '../modal/Modal'
 import { Table } from '../table/Table'
 import { COLUMNSTABLE } from './TicketColumnTable'
@@ -25,6 +26,9 @@ const Ticket = ({
     const [ isActiveFilterStatus, setIsActiveFilterStatus ] = useState('')
     const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
+    const [ totalCount, countingData ] = useCount({})
+
+    countingData('ok')
 
     const countTicketByStatus = (data, status) => {
         let count = data.filter(item => item.status === status)
@@ -60,13 +64,18 @@ const Ticket = ({
             getTicketByStatus(isActiveFilterStatus)
         }
 
-    }, [getTickets, isActiveFilterStatus, getTicketByStatus])
+        console.log(totalCount)
+
+    }, [totalCount, getTickets, isActiveFilterStatus, getTicketByStatus])
+
 
     return (
         <>
             <div className='space-y-4 h-full w-full'>
                 <TicketBar 
                     ticketToCount={ticketToCount}
+                    countingData={countingData}
+                    totalCount={totalCount}
                     countTicketByStatus={countTicketByStatus}
                     handleCallModal={handleCallModal} 
                     isActiveFilterStatus={isActiveFilterStatus} 
