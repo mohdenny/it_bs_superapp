@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
-const useCount = (test) => {
+const useCount = ({ test, test2 }) => {
     const [ totalCount, setTotalCount ] = useState()
 
-    useEffect(() => {
-        countingData(test)
-    }, [])
-
-    const countingData = (test) => {
+    const countingData = ({ test, test2 }) => {
         // const data = values.filter(item => item.status === term)
 
         // setTotalCount(data.length)
 
-        setTotalCount(test)
+        setTotalCount({test: test, test2: test2})
 
         // console.log(test)
 
