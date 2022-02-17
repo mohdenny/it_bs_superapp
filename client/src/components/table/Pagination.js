@@ -14,7 +14,7 @@ const Pagination = ({
     pageSize 
 }) => {
     return (
-        <div className='px-4 space-x-1'>
+        <div className='space-x-1'>
             <ButtonControl
                 control={'general'}
                 name={'first'}
