@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 
-export const COLUMNSTABLE = [
+export const TICKETCOLUMNSTABLE = [
     {
         Header: 'Subject',
         Footer: 'Subject',
