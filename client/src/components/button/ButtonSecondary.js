@@ -13,7 +13,7 @@ const ButtonGeneral = ({
     onClick, 
     disabled 
 }) => {
-    // console.log(typeof countingData)
+    console.log(typeof countingData)
     const ticketCountButton = (
         <button 
             className={classnames('bg-white h-11 text-gray-800 px-4 py-1 border-2 rounded-xl hover:bg-gray-100', {
@@ -24,7 +24,7 @@ const ButtonGeneral = ({
             {label} 
 
             { 
-                ticketToCount && countTicketByStatus(ticketToCount, name) ?
+                ticketToCount && countingData({test:'1', test2:'2'}) ?
                     <sup> { countTicketByStatus(ticketToCount, name)}</sup> 
                     : 
                     null
