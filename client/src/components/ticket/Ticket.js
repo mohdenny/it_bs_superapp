@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import useCount from '../../hooks/useCount'
 import Modal from '../modal/Modal'
 import { Table } from '../table/Table'
-import { COLUMNSTABLE } from './TicketColumnTable'
+import { TICKETCOLUMNSTABLE } from './TicketColumnTable'
 import TicketBar from './TicketBar'
 import TicketList from './TicketList'
 import TicketCreateForm from './TicketCreateForm'
@@ -27,8 +27,6 @@ const Ticket = ({
     const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
     const [ totalCount, countingData ] = useCount({})
-
-    countingData('ok')
 
     const countTicketByStatus = (data, status) => {
         let count = data.filter(item => item.status === status)
@@ -64,8 +62,6 @@ const Ticket = ({
             getTicketByStatus(isActiveFilterStatus)
         }
 
-        console.log(totalCount)
-
     }, [totalCount, getTickets, isActiveFilterStatus, getTicketByStatus])
 
 
@@ -84,9 +80,9 @@ const Ticket = ({
                 <div className="flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div className="shadow overflow-hidden border-b border-gray-200 py-4 bg-white sm:rounded-lg">
+                            <div className="shadow overflow-hidden border-b border-gray-200 py-4 px-4 bg-white sm:rounded-lg">
                                 {
-                                    tickets && <Table columnsTable={COLUMNSTABLE} datas={tickets} onClick={handleCallModal} BadgeControl={BadgeControl}/>
+                                    tickets && <Table columnsTable={TICKETCOLUMNSTABLE} datas={tickets} onClick={handleCallModal} BadgeControl={BadgeControl}/>
                                 }
                             </div>
                         </div>
