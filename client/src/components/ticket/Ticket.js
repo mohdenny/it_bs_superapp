@@ -4,7 +4,6 @@ import Modal from '../modal/Modal'
 import { Table } from '../table/Table'
 import { TICKETCOLUMNSTABLE } from './TicketColumnTable'
 import TicketBar from './TicketBar'
-import TicketList from './TicketList'
 import TicketCreateForm from './TicketCreateForm'
 import TicketEditForm from './TicketEditForm'
 import TicketDetail from './TicketDetail'
@@ -26,12 +25,12 @@ const Ticket = ({
     const [ isActiveFilterStatus, setIsActiveFilterStatus ] = useState('')
     const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
-    const [ totalCount, countingData ] = useCount({})
+    const [ totalCount ,setTerm ] = useCount(ticketToCount)
 
-    const countTicketByStatus = (data, status) => {
-        let count = data.filter(item => item.status === status)
-        return count.length
-    }
+    // const countTicketByStatus = (data, status) => {
+    //     let count = data.filter(item => item.status === status)
+    //     return count.length
+    // }
 
     const handleCallModal = (modal, id = null)  => {
         switch(modal){
@@ -60,19 +59,20 @@ const Ticket = ({
             getTickets()
         }else{
             getTicketByStatus(isActiveFilterStatus)
-        }
+        }        
 
-    }, [totalCount, getTickets, isActiveFilterStatus, getTicketByStatus])
+    }, [getTickets, isActiveFilterStatus, getTicketByStatus])
+
 
 
     return (
         <>
             <div className='space-y-4 h-full w-full'>
                 <TicketBar 
+                    setTerm={setTerm}
                     ticketToCount={ticketToCount}
-                    countingData={countingData}
                     totalCount={totalCount}
-                    countTicketByStatus={countTicketByStatus}
+                    // countTicketByStatus={countTicketByStatus}
                     handleCallModal={handleCallModal} 
                     isActiveFilterStatus={isActiveFilterStatus} 
                     setIsActiveFilterStatus={setIsActiveFilterStatus}
