@@ -7,9 +7,9 @@ const ButtonControl = ({ control, ...rest }) => {
     switch(control){
         case 'sidebar':
             return <ButtonSidebar {...rest}/>
-        case 'general':
+        case 'secondary':
             return <ButtonSecondary {...rest}/>
-        case 'primary':
+        case 'regular':
             return <ButtonPrimary {...rest}/>
         default:
             return null
