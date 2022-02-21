@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { useTable, useSortBy ,useGlobalFilter ,usePagination } from 'react-table'
 import FormControl from '../form/FormControl'
-import Pagination from './Pagination'
+import TablePagination from './TablePagination'
 import ButtonControl from '../button/ButtonControl'
 
 export const Table = ({ columnsTable, datas, onClick, BadgeControl }) => {
@@ -92,7 +92,7 @@ export const Table = ({ columnsTable, datas, onClick, BadgeControl }) => {
                                 }
                             </tbody>
                         </table>
-                        <Pagination 
+                        <TablePagination 
                             gotoPage={gotoPage}
                             previousPage={previousPage}
                             nextPage={nextPage}
