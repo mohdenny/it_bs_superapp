@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react'
 
-const useCount = ({ test, test2 }) => {
+const useCount = (datas) => {
     const [ totalCount, setTotalCount ] = useState()
+    const [ term, setTerm ] = useState('')
 
-    const countingData = ({ test, test2 }) => {
-        // const data = values.filter(item => item.status === term)
+    useEffect(() => {
+        countingData( datas, term )
+        console.log(term)
+    }, [datas, term])
 
-        // setTotalCount(data.length)
-
-        setTotalCount({test: test, test2: test2})
-
-        // console.log(test)
-
-        return null
+    const countingData = async (datas, term) => {
+        const data = datas.filter(item => item.status === term)
+        setTotalCount(data.length)
     }
 
-    return [totalCount, countingData]
+    return [totalCount, setTerm]
 }
 
 export default useCount
