@@ -1,34 +1,26 @@
 import React from 'react'
 import classnames from 'classnames'
 
-const ButtonGeneral = ({ 
+const ButtonSecondary = ({ 
     name, 
     label, 
     isActiveFilterStatus, 
     setIsActiveFilterStatus, 
-    ticketToCount, 
-    countingData, 
-    totalCount,
-    countTicketByStatus,
+    datas,
     onClick, 
-    disabled 
+    disabled,
+    children
 }) => {
-    console.log(typeof countingData)
-    const ticketCountButton = (
+    
+    const canClickedButton = (
         <button 
             className={classnames('bg-white h-11 text-gray-800 px-4 py-1 border-2 rounded-xl hover:bg-gray-100', {
-            'bg-gray-100 text-gray-900 font-bold shadow-md' : isActiveFilterStatus === name
+                'bg-gray-100 text-gray-900 font-bold shadow-md' : isActiveFilterStatus === name
             })} 
             onClick={() => setIsActiveFilterStatus(name)}
         >
             {label} 
-
-            { 
-                ticketToCount && countingData({test:'1', test2:'2'}) ?
-                    <sup> { countTicketByStatus(ticketToCount, name)}</sup> 
-                    : 
-                    null
-            }
+            {children}
         </button>
     )
 
@@ -44,11 +36,9 @@ const ButtonGeneral = ({
         </button>
     )
 
-    // console.log(totalCount)
-
     return (
-        ticketToCount ? ticketCountButton : regularButton
+        datas ? canClickedButton : regularButton
     )
 }
 
-export default ButtonGeneral
+export default ButtonSecondary
