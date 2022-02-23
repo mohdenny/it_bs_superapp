@@ -6,7 +6,7 @@ const ButtonSecondary = ({
     label, 
     isActiveFilterStatus, 
     setIsActiveFilterStatus, 
-    datas,
+    canClicked,
     onClick, 
     disabled,
     children
@@ -37,7 +37,7 @@ const ButtonSecondary = ({
     )
 
     return (
-        datas ? canClickedButton : regularButton
+        canClicked ? canClickedButton : regularButton
     )
 }
 

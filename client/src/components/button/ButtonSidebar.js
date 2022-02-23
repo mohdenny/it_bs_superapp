@@ -7,7 +7,7 @@ const ButtonSidebar = ({ location, path, label, ...rest }) => {
 
     return (
         <Link 
-            className={classnames('hover:bg-gray-200 h-11 w-full flex items-center px-7 space-x-1 text-sm', {
+            className={classnames('hover:bg-gray-200 h-11 w-full flex items-center px-7 space-x-1', {
                 'bg-gray-300 font-bold' : location === path
             })}
             to={path}

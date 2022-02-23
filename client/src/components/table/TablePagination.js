@@ -21,6 +21,7 @@ const TablePagination = ({
                 label={'<<'}
                 onClick={() => gotoPage(0)}
                 disabled={!canPreviousPage}
+                canClicked={false}
             />
             <ButtonControl
                 control={'secondary'}
@@ -28,6 +29,7 @@ const TablePagination = ({
                 label={'Previous'}
                 onClick={() => previousPage()}
                 disabled={!canPreviousPage}
+                canClicked={false}
             />
             <ButtonControl
                 control={'secondary'}
@@ -35,6 +37,7 @@ const TablePagination = ({
                 label={'Next'}
                 onClick={() => nextPage()}
                 disabled={!canNextPage}
+                canClicked={false}
             />
             <ButtonControl
                 control={'secondary'}
@@ -42,6 +45,7 @@ const TablePagination = ({
                 label={'>>'}
                 onClick={() => gotoPage(pageCount - 1)}
                 disabled={!canNextPage}
+                canClicked={false}
             />
             <span>
                 Page{' '}

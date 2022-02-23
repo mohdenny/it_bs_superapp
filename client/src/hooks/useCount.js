@@ -5,13 +5,19 @@ const useCount = (datas) => {
     const [ term, setTerm ] = useState('')
 
     useEffect(() => {
-        countingData( datas, term )
-        console.log(term)
+        if(true){
+            setTotalCount(countingData( datas, term ))
+            console.log(datas.length !== 0, 'ok')
+        }
     }, [datas, term])
 
-    const countingData = async (datas, term) => {
-        const data = datas.filter(item => item.status === term)
-        setTotalCount(data.length)
+    const countingData = (datas, term) => {
+        const data = datas.filter(item => item.status === 'pending')
+        // setTotalCount(1)
+
+        return data
+
+        // console.log(datas.length !== 0, term !== null)
     }
 
     return [totalCount, setTerm]

@@ -70,7 +70,6 @@ const Ticket = ({
             <div className='space-y-4 h-full w-full'>
                 <TicketBar 
                     setTerm={setTerm}
-                    ticketToCount={ticketToCount}
                     totalCount={totalCount}
                     // countTicketByStatus={countTicketByStatus}
                     handleCallModal={handleCallModal} 

@@ -14,14 +14,11 @@ const valuesButtonSecondary = [
 
 const TicketBar = ({ 
     handleCallModal,
-    // countTicketByStatus, 
-    ticketToCount, 
+    countTicketByStatus, 
     totalCount, 
     setTerm, 
     ...rest 
 }) => {
-
-    console.log(totalCount)
 
     return (
         <div className='flex flex-col items-center justify-center py-6 space-y-4 bg-white h-auto w-full '>
@@ -44,15 +41,12 @@ const TicketBar = ({
                                 control={item.control}
                                 name={item.name}
                                 label={item.label}
-                                datas={ticketToCount}
+                                canClicked={true}
                                 {...rest}
                             >
-                                {/* {
-                                    ticketToCount && countTicketByStatus(ticketToCount, item.name) ?
-                                        <sup> { countTicketByStatus(ticketToCount, item.name)}</sup> 
-                                        : 
-                                        null
-                                } */}
+                                {
+                                    totalCount != null && setTerm(item.name) && <sup>{totalCount}</sup> 
+                                }
                             </ButtonControl>
                         )
                     })
