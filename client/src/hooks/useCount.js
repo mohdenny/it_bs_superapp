@@ -6,8 +6,8 @@ const useCount = (datas) => {
 
     useEffect(() => {
         if(true){
-            setTotalCount(countingData( datas, term ))
-            console.log(datas.length !== 0, 'ok')
+            setTotalCount(1)
+            // console.log(datas.length !== 0, 'ok')
         }
     }, [datas, term])
 
