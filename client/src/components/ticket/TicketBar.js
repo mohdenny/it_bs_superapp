@@ -45,7 +45,7 @@ const TicketBar = ({
                                 {...rest}
                             >
                                 {
-                                    totalCount != null && setTerm(item.name) && <sup>{totalCount}</sup> 
+                                    totalCount != false && setTerm(item.name) && <sup>{totalCount}</sup> 
                                 }
                             </ButtonControl>
                         )
