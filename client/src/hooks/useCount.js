@@ -13,11 +13,10 @@ const useCount = (datas) => {
     const countingData = (datas, term) => {
         const data = datas.filter(item => item.status === term)
         setTotalCount(data)
-
-        // console.log(datas.length !== 0, term !== null)
     }
 
-    return [totalCount, setTerm, countingData]
+    return [totalCount, term]
+
 }
 
 export default useCount

@@ -16,9 +16,11 @@ const TicketBar = ({
     handleCallModal,
     countTicketByStatus, 
     totalCount, 
-    setTerm, 
+    term, 
     ...rest 
 }) => {
+
+    console.log(totalCount)
 
     return (
         <div className='flex flex-col items-center justify-center py-6 space-y-4 bg-white h-auto w-full '>
@@ -45,7 +47,7 @@ const TicketBar = ({
                                 {...rest}
                             >
                                 {
-                                    totalCount != false && setTerm(item.name) && <sup>{totalCount}</sup> 
+                                    false && <sup>{totalCount}</sup> 
                                 }
                             </ButtonControl>
                         )
