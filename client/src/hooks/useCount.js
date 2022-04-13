@@ -2,20 +2,22 @@ import React, { useEffect, useState } from 'react'
 
 const useCount = (datas) => {
     const [ totalCount, setTotalCount ] = useState()
-    const [ term, setTerm ] = useState('')
 
     useEffect(() => {
-        if(true){
-            countingData(datas, term)
+        if(datas){
+            // countingData(datas, term)
+            const data = datas.filter(item => item.status === 'closed')
+            setTotalCount(data)
+            console.log(totalCount)
         }
-    }, [datas, term])
+    }, [datas])
 
-    const countingData = (datas, term) => {
-        const data = datas.filter(item => item.status === term)
-        setTotalCount(data)
-    }
+    // const countingData = (datas, term) => {
+    //     const data = datas.filter(item => item.status === term)
+    //     setTotalCount(data)
+    // }
 
-    return [totalCount, term]
+    return [totalCount]
 
 }
 
