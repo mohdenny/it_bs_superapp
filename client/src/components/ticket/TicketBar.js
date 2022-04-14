@@ -14,9 +14,10 @@ const valuesButtonSecondary = [
 
 const TicketBar = ({ 
     handleCallModal,
-    countTicketByStatus, 
+    // countTicketByStatus, 
+    datas,
     totalCount, 
-    term, 
+    countingData, 
     ...rest 
 }) => {
 
@@ -46,9 +47,7 @@ const TicketBar = ({
                                 canClicked={true}
                                 {...rest}
                             >
-                                {
-                                    false && <sup>{totalCount}</sup> 
-                                }
+                                <sup>{countingData(datas, item.status)}</sup>
                             </ButtonControl>
                         )
                     })

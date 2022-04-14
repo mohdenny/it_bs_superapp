@@ -25,7 +25,7 @@ const Ticket = ({
     const [ isActiveFilterStatus, setIsActiveFilterStatus ] = useState('')
     const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
-    const [ totalCount ,term ] = useCount(ticketToCount)
+    const [ totalCount, countingData ] = useCount()
 
     // const countTicketByStatus = (data, status) => {
     //     let count = data.filter(item => item.status === status)
@@ -68,14 +68,17 @@ const Ticket = ({
     return (
         <>
             <div className='space-y-4 h-full w-full'>
-                <TicketBar 
-                    term={term}
-                    totalCount={totalCount}
-                    // countTicketByStatus={countTicketByStatus}
-                    handleCallModal={handleCallModal} 
-                    isActiveFilterStatus={isActiveFilterStatus} 
-                    setIsActiveFilterStatus={setIsActiveFilterStatus}
-                />
+                {
+                    tickets && <TicketBar 
+                        countingData={countingData}
+                        totalCount={totalCount}
+                        datas={tickets}
+                        // countTicketByStatus={countTicketByStatus}
+                        handleCallModal={handleCallModal} 
+                        isActiveFilterStatus={isActiveFilterStatus} 
+                        setIsActiveFilterStatus={setIsActiveFilterStatus}
+                    />
+                }
                 <div className="flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
