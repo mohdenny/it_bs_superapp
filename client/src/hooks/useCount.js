@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-const useCount = () => {
+const useCount = ({ datas }) => {
     const [ totalCount, setTotalCount ] = useState()
+    const [ term, setTerm ] = useState('')
 
     // useEffect(() => {
     //     if(datas){
@@ -9,12 +10,13 @@ const useCount = () => {
     //     }
     // }, [datas, term])
 
-    const countingData = (datas, term) => {
-        const data = datas.filter(item => item.status === term)
-        console.log(data, term)
-    }
+    // const countingData = async (datas, term) => {
+    //     const data = datas.filter(item => item.status === term)
+    // }
 
-    return [totalCount, countingData]
+    // console.log(term)
+
+    return [setTerm]
 
 }
 

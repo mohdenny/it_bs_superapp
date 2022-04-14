@@ -25,7 +25,7 @@ const Ticket = ({
     const [ isActiveFilterStatus, setIsActiveFilterStatus ] = useState('')
     const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
-    const [ totalCount, countingData ] = useCount()
+    const [ setTerm, countingData ] = useCount(ticketToCount)
 
     // const countTicketByStatus = (data, status) => {
     //     let count = data.filter(item => item.status === status)
@@ -63,16 +63,13 @@ const Ticket = ({
 
     }, [getTickets, isActiveFilterStatus, getTicketByStatus])
 
-
-
     return (
         <>
             <div className='space-y-4 h-full w-full'>
                 {
-                    tickets && <TicketBar 
+                    <TicketBar 
                         countingData={countingData}
-                        totalCount={totalCount}
-                        datas={tickets}
+                        setTerm={setTerm}
                         // countTicketByStatus={countTicketByStatus}
                         handleCallModal={handleCallModal} 
                         isActiveFilterStatus={isActiveFilterStatus} 
