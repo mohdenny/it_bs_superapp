@@ -1,11 +1,11 @@
-import { dataTicket } from "../utils/staticData"
+import { dataTicket } from "../utils/staticData" // import static data
 import { 
     GET_TICKETS,
     GET_TICKET,
     TICKET_ERROR,
     CLEAR_TICKET,
     GET_TICKET_BY_STATUS
-} from "./types"
+} from "./types" // import types action
 
 //  get all ticket
 export const getTickets = () => async dispatch => {

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { HiMenu, HiUserCircle } from 'react-icons/hi'
-import ButtonControl from '../button/ButtonControl'
+import React, { useState } from 'react' // import react , hook
+import { useLocation } from 'react-router-dom' // import react-router module
+import { HiMenu, HiUserCircle } from 'react-icons/hi' // import react-icons
+import ButtonControl from '../button/ButtonControl' // import component 
 
 const logo = {
     text: 'IT BROADCAST',

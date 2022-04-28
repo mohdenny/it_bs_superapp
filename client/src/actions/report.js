@@ -1,5 +1,5 @@
-import { dataReportProgram } from '../utils/staticData'
-import { GET_PROGRAMS, REPORT_ERROR, CLEAR_REPORT } from './types'
+import { dataReportProgram } from '../utils/staticData' // import static data
+import { GET_PROGRAMS, REPORT_ERROR, CLEAR_REPORT } from './types' // import types action
 
 // get all programs report
 export const getPrograms = () => async dispatch => {
