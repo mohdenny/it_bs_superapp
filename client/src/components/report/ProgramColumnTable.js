@@ -46,14 +46,14 @@ export const PROGRAMCOLUMNSTABLE = [
         accessor: 'dalet'
     },
     {
-        Header: 'Program Director',
-        Footer: 'Program Director',
+        Header: 'PD',
+        Footer: 'PD',
         accessor: 'pd'
     },
     {
         Header: 'Description',
         Footer: 'Description',
-        accessor: 'description'
+        accessor: 'description',
     },
     {
         Header: 'Date',
