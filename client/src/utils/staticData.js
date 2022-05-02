@@ -28,3 +28,7 @@ export const dataTicket = [
 export const dataReportProgram = [
     { 'id': '1', 'program': 'metro pagi primetime', 'onduty': ['Angga Eirisia', 'Neldo'], 'onair': 'aman', 'dalet': 'aman', 'description': '', 'pd': 'haru', 'date': '2021-12-14T10:12:21+07:00' }
 ]
+
+export const dataReportLive = [
+    { 'id': '1', 'program': 'top news', 'pukul': '21:10', 'unit': 'TVU 10', 'server': '6', 'modem up': '6', 'lokasi': 'jogja', 'description': '', 'date': '2022-04-02T21:15:21+07:00' }
+]
