@@ -2,12 +2,24 @@ import React, { useState, useEffect } from 'react'
 import Modal from '../modal/Modal'
 import { Table } from '../table/Table'
 import { PROGRAMCOLUMNSTABLE } from './ProgramColumnTable'
+import { LIVECOLUMNSTABLE } from './LiveColumnTable'
 import ReportBar from './ReportBar'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getPrograms, getProgramById } from '../../actions/report'
+import { getPrograms, getProgramById, getLives, getLiveById } from '../../actions/report'
 
-const Report = ({ getPrograms, getProgramById, report: { programs, program } }) => {
+const Report = ({ 
+    getPrograms, 
+    getProgramById, 
+    getLives, 
+    getLiveById, 
+    report: { 
+        programs, 
+        program,
+        lives,
+        live 
+    } 
+}) => {
     const [ isActiveTab, setIsActiveTab ] = useState('program')
     const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
@@ -37,11 +49,13 @@ const Report = ({ getPrograms, getProgramById, report: { programs, program } }) 
         
         if(isActiveTab === 'program'){
             getPrograms()
-        }else{
-            return null
         }
 
-    }, [getPrograms, isActiveTab])
+        if(isActiveTab === 'live-report'){
+            getLives()
+        }
+
+    }, [getPrograms, getLives, isActiveTab])
 
     return (
         <>
@@ -56,7 +70,10 @@ const Report = ({ getPrograms, getProgramById, report: { programs, program } }) 
                         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <div className="shadow overflow-hidden border-b border-gray-200 py-4 px-4 bg-white sm:rounded-lg">
                                 {
-                                    programs && <Table columnsTable={PROGRAMCOLUMNSTABLE} datas={programs} onClick={handleCallModal}/>
+                                    isActiveTab === 'program' && programs && <Table columnsTable={PROGRAMCOLUMNSTABLE} datas={programs} onClick={handleCallModal}/>
+                                }
+                                {
+                                    isActiveTab === 'live-report' && lives && <Table columnsTable={LIVECOLUMNSTABLE} datas={lives} onClick={handleCallModal}/>
                                 }
                             </div>
                         </div>
@@ -64,9 +81,17 @@ const Report = ({ getPrograms, getProgramById, report: { programs, program } }) 
                 </div>
             </div>
                 { 
-                    callModal.create && 
+                    isActiveTab === 'program' && callModal.create && 
                         ( 
-                            <Modal title={'Create new ticket'} nameModal={nameModal} setCallModal={setCallModal}>
+                            <Modal title={'Create new report Program'} nameModal={nameModal} setCallModal={setCallModal}>
+                                {/* <TicketCreateForm /> */}
+                            </Modal> 
+                        )
+                }
+                { 
+                    isActiveTab === 'live-report' && callModal.create && 
+                        ( 
+                            <Modal title={'Create new report Live'} nameModal={nameModal} setCallModal={setCallModal}>
                                 {/* <TicketCreateForm /> */}
                             </Modal> 
                         )
@@ -94,6 +119,8 @@ const Report = ({ getPrograms, getProgramById, report: { programs, program } }) 
 Report.propTypes = {
     getPrograms: PropTypes.func.isRequired,
     getProgramById: PropTypes.func.isRequired,
+    getLives: PropTypes.func.isRequired,
+    getLiveById: PropTypes.func.isRequired,
     report: PropTypes.object.isRequired
 }
 
@@ -101,4 +128,4 @@ const mapStateToProps = state => ({
     report: state.report
 })
 
-export default connect(mapStateToProps, { getPrograms, getProgramById })(Report)
+export default connect(mapStateToProps, { getPrograms, getProgramById, getLives, getLiveById })(Report)
