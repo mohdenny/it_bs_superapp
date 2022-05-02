@@ -37,8 +37,10 @@ export const TICKETCOLUMNSTABLE = [
             return (
                 <BadgeControl 
                     control='ticket'
-                    status={value}
-                />
+                    color={value}
+                >
+                    {value}
+                </BadgeControl>
             )
         }
     },

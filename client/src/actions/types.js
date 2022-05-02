@@ -12,5 +12,8 @@ export const TICKET_ERROR = 'TICKET_ERROR'
 
 // report
 export const GET_PROGRAMS = 'GET_PROGRAMS'
-export const CLEAR_REPORT = 'CLEAR_TICKET'
+export const GET_PROGRAM = 'GET_PROGRAM'
+export const GET_LIVES = 'GET_LIVES'
+export const GET_LIVE = 'GET_LIVE'
+export const CLEAR_REPORT = 'CLEAR_REPORT'
 export const REPORT_ERROR= 'REPORT_ERROR'

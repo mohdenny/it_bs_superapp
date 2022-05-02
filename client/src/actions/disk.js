@@ -1,6 +1,6 @@
-import api from '../utils/api' // import instance axios
-import { dataDisk } from '../utils/staticData' // import static data
-import { GET_MAPPING_DISK, DISK_ERROR, GET_SAVED_DISK_PATH } from './types' // import types action
+import api from '../utils/api' 
+import { dataDisk } from '../utils/staticData'
+import { GET_MAPPING_DISK, DISK_ERROR, GET_SAVED_DISK_PATH } from './types' 
 
 //  get mapping disk
 export const getMappingDisk = () => async dispatch => {

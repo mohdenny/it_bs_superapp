@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import useCount from '../../hooks/useCount'
 import Modal from '../modal/Modal'
 import { Table } from '../table/Table'
 import { TICKETCOLUMNSTABLE } from './TicketColumnTable'

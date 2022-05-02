@@ -1,5 +1,6 @@
 import React from 'react'
 import ButtonControl from '../button/ButtonControl'
+import BadgeControl from '../badge/BadgeControl'
 
 const valuesButtonSecondary = [
     { name: '', control: 'secondary', label: 'All' },
@@ -24,9 +25,9 @@ const TicketBar = ({
         <div className='flex flex-col items-center justify-center py-6 space-y-4 bg-white h-auto w-full '>
             <div className='flex items-center justify-center h-auto w-full'>
                 <ButtonControl
-                    control='regular'
+                    control='primary'
                     label='Create New'
-                    icon='search'
+                    icon='add'
                     color='blue'
                     textColor='white'
                     onClick={() => handleCallModal('modal-create-form')}
@@ -44,8 +45,10 @@ const TicketBar = ({
                                 canClicked={true}
                                 {...rest}
                             >
+                                {' '}
                                 { 
-                                    countTicketByStatus(ticketToCount, item.name) !== 0 && <sup> { countTicketByStatus(ticketToCount, item.name) }</sup> 
+                                    countTicketByStatus(ticketToCount, item.name) !== 0 && 
+                                        <sup><BadgeControl control='ticket' color={item.name}>{countTicketByStatus(ticketToCount, item.name)}</BadgeControl></sup> 
                                 }
                             </ButtonControl>
                         )
