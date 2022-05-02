@@ -26,16 +26,6 @@ const TicketBar = ({
     return (
         <MenuBarContainer>
             <MenuBarControl control={'first-line'}>
-                <ButtonControl
-                    control='primary'
-                    label='Create New'
-                    icon='add'
-                    color='blue'
-                    textColor='white'
-                    onClick={() => handleCallModal('modal-create-form')}
-                />
-            </MenuBarControl>
-            <MenuBarControl control={'second-line'}>
                 {
                     valuesButtonSecondary.map((item, index) => {
                         return (
@@ -56,6 +46,16 @@ const TicketBar = ({
                         )
                     })
                 }
+            </MenuBarControl>
+            <MenuBarControl control={'second-line'}>
+                <ButtonControl
+                    control='primary'
+                    label='Create New'
+                    icon='add'
+                    color='blue'
+                    textColor='white'
+                    onClick={() => handleCallModal('modal-create-form')}
+                />
             </MenuBarControl>
         </MenuBarContainer>
     )
