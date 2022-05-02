@@ -1,11 +1,10 @@
 import { format } from 'date-fns'
-import { Fragment } from 'react'
 
-export const TICKETCOLUMNSTABLE = [
+export const PROGRAMCOLUMNSTABLE = [
     {
-        Header: 'Subject',
-        Footer: 'Subject',
-        accessor: 'subject',
+        Header: 'Program',
+        Footer: 'Program',
+        accessor: 'program',
         sticky: 'left',
         Cell: ({ row, value, onClick }) => {
             return (
@@ -37,24 +36,24 @@ export const TICKETCOLUMNSTABLE = [
         }
     },
     {
-        Header: 'Department',
-        Footer: 'Department',
-        accessor: 'department'
+        Header: 'Onair',
+        Footer: 'Onair',
+        accessor: 'onair'
     },
     {
-        Header: 'Status',
-        Footer: 'Status',
-        accessor: 'status',
-        Cell: ({ value, BadgeControl }) => {
-            return (
-                <BadgeControl 
-                    control='ticket'
-                    color={value}
-                >
-                    {value}
-                </BadgeControl>
-            )
-        }
+        Header: 'Dalet',
+        Footer: 'Dalet',
+        accessor: 'dalet'
+    },
+    {
+        Header: 'Program Director',
+        Footer: 'Program Director',
+        accessor: 'pd'
+    },
+    {
+        Header: 'Description',
+        Footer: 'Description',
+        accessor: 'description'
     },
     {
         Header: 'Date',

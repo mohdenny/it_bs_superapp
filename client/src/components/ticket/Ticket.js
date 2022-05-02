@@ -69,8 +69,8 @@ const Ticket = ({
                         countTicketByStatus={countTicketByStatus}
                         handleCallModal={handleCallModal}
                         ticketToCount={ticketToCount} 
-                        isActiveFilterStatus={isActiveFilterStatus} 
-                        setIsActiveFilterStatus={setIsActiveFilterStatus}
+                        isActive={isActiveFilterStatus} 
+                        setIsActive={setIsActiveFilterStatus}
                     />
                 }
                 <div className="flex flex-col">

@@ -1,4 +1,6 @@
 import React from 'react'
+import MenuBarContainer from '../menu/MenuBarContainer'
+import MenuBarControl from '../menu/MenuBarControl'
 import ButtonControl from '../button/ButtonControl'
 import BadgeControl from '../badge/BadgeControl'
 
@@ -22,8 +24,8 @@ const TicketBar = ({
 }) => {
 
     return (
-        <div className='flex flex-col items-center justify-center py-6 space-y-4 bg-white h-auto w-full '>
-            <div className='flex items-center justify-center h-auto w-full'>
+        <MenuBarContainer>
+            <MenuBarControl control={'first-line'}>
                 <ButtonControl
                     control='primary'
                     label='Create New'
@@ -32,8 +34,8 @@ const TicketBar = ({
                     textColor='white'
                     onClick={() => handleCallModal('modal-create-form')}
                 />
-            </div>
-            <div className='flex flex-row items-center justify-center h-auto space-x-4 w-full'>
+            </MenuBarControl>
+            <MenuBarControl control={'second-line'}>
                 {
                     valuesButtonSecondary.map((item, index) => {
                         return (
@@ -54,8 +56,8 @@ const TicketBar = ({
                         )
                     })
                 }
-            </div>
-        </div>
+            </MenuBarControl>
+        </MenuBarContainer>
     )
 }
 

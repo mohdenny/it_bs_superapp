@@ -1,7 +1,6 @@
 import React from 'react'
 
 const StatusTicket = ({ color, children }) => {
-    console.log(color)
     switch(color){
         case 'open':
             return  (
