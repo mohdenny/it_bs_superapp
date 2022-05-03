@@ -50,7 +50,7 @@ const Sidebar = ({ children }) => {
                     <div className='flex flex-row h-full w-full'>
                         {
                             !toggleMenu &&
-                            <div className="flex flex-col bg-white space-y-2 h-auto w-64 py-4">
+                            <div className="flex flex-col bg-white border-r border-gray-200 space-y-2 h-auto w-64 py-4">
                                 {
                                     valuesButtonSidebar.map((item, index) => {
                                         return (

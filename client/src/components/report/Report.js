@@ -5,6 +5,7 @@ import { PROGRAMCOLUMNSTABLE } from './ProgramColumnTable'
 import { LIVECOLUMNSTABLE } from './LiveColumnTable'
 import TableContainer from '../table/TableContainer'
 import ReportBar from './ReportBar'
+import ProgramCreateForm from './ProgramCreateForm'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getPrograms, getProgramById, getLives, getLiveById } from '../../actions/report'
@@ -75,38 +76,38 @@ const Report = ({
                     }
                 </TableContainer>
             </div>
-                { 
-                    isActiveTab === 'program' && callModal.create && 
-                        ( 
-                            <Modal title={'Create new report Program'} nameModal={nameModal} setCallModal={setCallModal}>
-                                {/* <TicketCreateForm /> */}
-                            </Modal> 
-                        )
-                }
-                { 
-                    isActiveTab === 'live-report' && callModal.create && 
-                        ( 
-                            <Modal title={'Create new report Live'} nameModal={nameModal} setCallModal={setCallModal}>
-                                {/* <TicketCreateForm /> */}
-                            </Modal> 
-                        )
-                }
-                { 
-                    program && callModal.edit && 
-                        ( 
-                            <Modal title={'Update ticket'} nameModal={nameModal} setCallModal={setCallModal}>
-                                {/* <TicketEditForm ticketById={ticket}/> */}
-                            </Modal> 
-                        )
-                }
-                { 
-                    program && callModal.detail &&
-                        ( 
-                            <Modal title={program} nameModal={nameModal} setCallModal={setCallModal}>
-                                {/* <TicketDetail ticketById={ticket} /> */}
-                            </Modal>
-                        )
-                }
+            { 
+                isActiveTab === 'program' && callModal.create && 
+                    ( 
+                        <Modal title={'Create new report Program'} nameModal={nameModal} setCallModal={setCallModal}>
+                            <ProgramCreateForm />
+                        </Modal> 
+                    )
+            }
+            { 
+                isActiveTab === 'live-report' && callModal.create && 
+                    ( 
+                        <Modal title={'Create new report Live'} nameModal={nameModal} setCallModal={setCallModal}>
+                            {/* <TicketCreateForm /> */}
+                        </Modal> 
+                    )
+            }
+            { 
+                program && callModal.edit && 
+                    ( 
+                        <Modal title={'Update ticket'} nameModal={nameModal} setCallModal={setCallModal}>
+                            {/* <TicketEditForm ticketById={ticket}/> */}
+                        </Modal> 
+                    )
+            }
+            { 
+                program && callModal.detail &&
+                    ( 
+                        <Modal title={program} nameModal={nameModal} setCallModal={setCallModal}>
+                            {/* <TicketDetail ticketById={ticket} /> */}
+                        </Modal>
+                    )
+            }
         </>
     )
 }

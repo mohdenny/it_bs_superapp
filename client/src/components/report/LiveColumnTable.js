@@ -28,6 +28,22 @@ export const LIVECOLUMNSTABLE = [
         }
     },
     {
+        Header: 'Onduty',
+        Footer: 'Onduty',
+        accessor: 'onduty',
+        Cell: ({ value }) => {
+            return (
+                <>
+                    {
+                        value.map((item, index) => {
+                            return <p key={index}>{item}</p>
+                        })
+                    } 
+                </>
+            )
+        }
+    },
+    {
         Header: 'Unit',
         Footer: 'Unit',
         accessor: 'unit'

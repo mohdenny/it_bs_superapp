@@ -65,15 +65,13 @@ const Ticket = ({
     return (
         <>
             <div className='space-y-4 h-full w-full'>
-                {
-                    <TicketBar 
-                        countTicketByStatus={countTicketByStatus}
-                        handleCallModal={handleCallModal}
-                        ticketToCount={ticketToCount} 
-                        isActive={isActiveFilterStatus} 
-                        setIsActive={setIsActiveFilterStatus}
-                    />
-                }
+                <TicketBar 
+                    countTicketByStatus={countTicketByStatus}
+                    handleCallModal={handleCallModal}
+                    ticketToCount={ticketToCount} 
+                    isActive={isActiveFilterStatus} 
+                    setIsActive={setIsActiveFilterStatus}
+                />
                 <TableContainer>
                     {
                         tickets && <Table columnsTable={TICKETCOLUMNSTABLE} datas={tickets} onClick={handleCallModal} BadgeControl={BadgeControl}/>
