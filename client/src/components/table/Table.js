@@ -42,7 +42,7 @@ export const Table = ({ columnsTable, datas, onClick, BadgeControl }) => {
             { page &&
                 (
                     <>
-                        <table className="min-w-full divide-y border-2 divide-gray-200 table-fixed" {...getTableProps()}>
+                        <table className="min-w-full divide-y border shadow-lg divide-gray-200 table-fixed" {...getTableProps()}>
                             <thead className="bg-gray-50">
                                 {
                                     headerGroups.map(headerGroup => (
