@@ -3,6 +3,7 @@ import Modal from '../modal/Modal'
 import { Table } from '../table/Table'
 import { PROGRAMCOLUMNSTABLE } from './ProgramColumnTable'
 import { LIVECOLUMNSTABLE } from './LiveColumnTable'
+import TableContainer from '../table/TableContainer'
 import ReportBar from './ReportBar'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -65,20 +66,14 @@ const Report = ({
                     setIsActive={setIsActiveTab}
                     handleCallModal={handleCallModal}
                 />
-                <div className="flex flex-col">
-                    <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div className="shadow overflow-hidden border-b border-gray-200 py-4 px-4 bg-white sm:rounded-lg">
-                                {
-                                    isActiveTab === 'program' && programs && <Table columnsTable={PROGRAMCOLUMNSTABLE} datas={programs} onClick={handleCallModal}/>
-                                }
-                                {
-                                    isActiveTab === 'live-report' && lives && <Table columnsTable={LIVECOLUMNSTABLE} datas={lives} onClick={handleCallModal}/>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <TableContainer>
+                    {
+                        isActiveTab === 'program' && programs && <Table columnsTable={PROGRAMCOLUMNSTABLE} datas={programs} onClick={handleCallModal}/>
+                    }
+                    {
+                        isActiveTab === 'live-report' && lives && <Table columnsTable={LIVECOLUMNSTABLE} datas={lives} onClick={handleCallModal}/>
+                    }
+                </TableContainer>
             </div>
                 { 
                     isActiveTab === 'program' && callModal.create && 
