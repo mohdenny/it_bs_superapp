@@ -3,6 +3,7 @@ import Modal from '../modal/Modal'
 import { Table } from '../table/Table'
 import { TICKETCOLUMNSTABLE } from './TicketColumnTable'
 import TicketBar from './TicketBar'
+import TableContainer from '../table/TableContainer'
 import TicketCreateForm from './TicketCreateForm'
 import TicketEditForm from './TicketEditForm'
 import TicketDetail from './TicketDetail'
@@ -73,17 +74,11 @@ const Ticket = ({
                         setIsActive={setIsActiveFilterStatus}
                     />
                 }
-                <div className="flex flex-col">
-                    <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div className="shadow overflow-hidden border-b border-gray-200 py-4 px-4 bg-white sm:rounded-lg">
-                                {
-                                    tickets && <Table columnsTable={TICKETCOLUMNSTABLE} datas={tickets} onClick={handleCallModal} BadgeControl={BadgeControl}/>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <TableContainer>
+                    {
+                        tickets && <Table columnsTable={TICKETCOLUMNSTABLE} datas={tickets} onClick={handleCallModal} BadgeControl={BadgeControl}/>
+                    }
+                </TableContainer>
             </div>
             { 
                 callModal.create && 
