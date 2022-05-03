@@ -22,7 +22,10 @@ export const LIVECOLUMNSTABLE = [
     {
         Header: 'Pukul',
         Footer: 'Pukul',
-        accessor: 'pukul'
+        accessor: 'pukul',
+        Cell: ({ value }) => {
+            return format(new Date(value), 'HH:mm')
+        }
     },
     {
         Header: 'Unit',

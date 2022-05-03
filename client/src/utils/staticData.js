@@ -30,5 +30,5 @@ export const dataReportProgram = [
 ]
 
 export const dataReportLive = [
-    { 'id': '1', 'program': 'top news', 'pukul': '21:10', 'unit': 'TVU 10', 'server': '6', 'modem up': '6', 'lokasi': 'jogja', 'description': '', 'date': '2022-04-02T21:15:21+07:00' }
+    { 'id': '1', 'program': 'top news', 'pukul': '2022-04-02T21:05:21+07:00', 'unit': 'TVU 10', 'server': '6', 'modem up': '6', 'lokasi': 'jogja', 'description': '', 'date': '2022-04-02T21:15:21+07:00' }
 ]
