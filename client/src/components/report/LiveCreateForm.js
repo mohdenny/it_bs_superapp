@@ -19,22 +19,39 @@ const ondutyOptions = [
     { key: 'Option 3', value: 'option3' }
 ]
 
+const unitOptions = [
+    { key: 'Select an option', value: '' },
+    { key: 'Option 1', value: 'option1' },
+    { key: 'Option 2', value: 'option2' },
+    { key: 'Option 3', value: 'option3' }
+]
+
+const serverOptions = [
+    { key: 'Select an option', value: '' },
+    { key: 'Option 1', value: 'option1' },
+    { key: 'Option 2', value: 'option2' },
+    { key: 'Option 3', value: 'option3' }
+]
+
 const initialValues = {
     program: '',
     onduty: '',
-    onair: '',
-    dalet: '',
-    pd: '',
+    pukul: '',
+    unit: '',
+    server: '',
+    modemup: '',
+    lokasi: '',
     description: ''
 }
 
-const ProgramCreateForm = () => {
+const LiveCreateForm = () => {
     const validationSchema = Yup.object({
         program: Yup.string().required('Required'),
         onduty: Yup.string().required('Required'),
-        onair: Yup.string().required('Required'),
-        dalet: Yup.string().required('Required'),
-        pd: Yup.string().required('Required')
+        pukul: Yup.string().required('Required'),
+        unit: Yup.string().required('Required'),
+        server: Yup.string().required('Required'),
+        modemup: Yup.string().required('Required')
     })
 
     const onSubmit = values => {
@@ -65,20 +82,29 @@ const ProgramCreateForm = () => {
                                     name={'onduty'}
                                     options={ondutyOptions}
                                 />
-                                <FormControl
-                                    control={'textarea'}
-                                    label={'Onair'}
-                                    name={'onair'}
-                                />
-                                <FormControl
-                                    control={'textarea'}
-                                    label={'Dalet'}
-                                    name={'dalet'}
-                                />
+                                <div className='flex flex-row w-full justify-between'>
+                                    <FormControl
+                                        control={'input'}
+                                        label={'Pukul'}
+                                        name={'pukul'}
+                                    />
+                                    <FormControl
+                                        control={'select'}
+                                        label={'Unit'}
+                                        name={'unit'}
+                                        options={unitOptions}
+                                    />
+                                    <FormControl
+                                        control={'select'}
+                                        label={'Server'}
+                                        name={'server'}
+                                        options={serverOptions}
+                                    />
+                                </div>
                                 <FormControl
                                     control={'input'}
-                                    label={'PD'}
-                                    name={'pd'}
+                                    label={'Modem Up'}
+                                    name={'modemup'}
                                 />
                                 <FormControl
                                     control={'textarea'}
@@ -106,4 +132,4 @@ const ProgramCreateForm = () => {
     )
 }
 
-export default ProgramCreateForm
+export default LiveCreateForm

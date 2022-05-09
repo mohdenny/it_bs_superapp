@@ -44,9 +44,7 @@ export const getLives = () => async dispatch => {
 
     try {
         const res = await dataReportLive
-
-        console.log(dataReportLive)
-
+        
         dispatch({
             type: GET_LIVES,
             payload: res

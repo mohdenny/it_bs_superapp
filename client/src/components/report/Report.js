@@ -6,6 +6,7 @@ import { LIVECOLUMNSTABLE } from './LiveColumnTable'
 import TableContainer from '../table/TableContainer'
 import ReportBar from './ReportBar'
 import ProgramCreateForm from './ProgramCreateForm'
+import LiveCreateForm from './LiveCreateForm'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getPrograms, getProgramById, getLives, getLiveById } from '../../actions/report'
@@ -88,7 +89,7 @@ const Report = ({
                 isActiveTab === 'live-report' && callModal.create && 
                     ( 
                         <Modal title={'Create new report Live'} nameModal={nameModal} setCallModal={setCallModal}>
-                            {/* <TicketCreateForm /> */}
+                            <LiveCreateForm />
                         </Modal> 
                     )
             }
