@@ -8,7 +8,7 @@ const Modal = ({ title, nameModal, setCallModal, children}) => {
                 return (
                     title.map(item => {
                         return (
-                            <p key={item.id} className='capitalize font-bold text-lg'>{item.subject}</p>
+                            <p key={item.id} className='capitalize font-bold text-lg'>{item.subject || item.program}</p>
                         )
                     })
                 )

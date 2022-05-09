@@ -7,6 +7,8 @@ import TableContainer from '../table/TableContainer'
 import ReportBar from './ReportBar'
 import ProgramCreateForm from './ProgramCreateForm'
 import LiveCreateForm from './LiveCreateForm'
+import ProgramDetail from './ProgramDetail'
+import LiveDetail from './LiveDetail'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getPrograms, getProgramById, getLives, getLiveById } from '../../actions/report'
@@ -102,10 +104,18 @@ const Report = ({
                     )
             }
             { 
-                program && callModal.detail &&
+                isActiveTab === 'program' && program && callModal.detail &&
                     ( 
                         <Modal title={program} nameModal={nameModal} setCallModal={setCallModal}>
-                            {/* <TicketDetail ticketById={ticket} /> */}
+                            <ProgramDetail programById={program} />
+                        </Modal>
+                    )
+            }
+            { 
+                isActiveTab === 'live-report' && live && callModal.detail &&
+                    ( 
+                        <Modal title={live} nameModal={nameModal} setCallModal={setCallModal}>
+                            <LiveDetail liveById={live} />
                         </Modal>
                     )
             }

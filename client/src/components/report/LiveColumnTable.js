@@ -56,7 +56,7 @@ export const LIVECOLUMNSTABLE = [
     {
         Header: 'Modem Up',
         Footer: 'Modem Up',
-        accessor: 'modem up'
+        accessor: 'modemup'
     },
     {
         Header: 'Lokasi',

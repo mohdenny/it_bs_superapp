@@ -1,64 +1,45 @@
 import React, { Fragment } from 'react'
 import moment from 'moment'
 import TicketHistory from './TicketHistory'
+import LabelControl from '../form/label/LabelControl'
+
+const valuesLabel = [
+    { control: 'label', text: 'Ticket Created By:' ,values: (item) => item.name },
+    { control: 'label', text: 'Ticket Created Date:' ,values: (item) => moment(item.date).format('D-M-YYYY, H:mm') },
+    { control: 'label', text: 'Ticket ID:' ,values: (item) => item.id },
+    { control: 'label', text: 'Subject:' ,values: (item) => item.subject },
+    { control: 'label', text: 'User Department:' ,values: (item) => item.department },
+    { control: 'label', text: 'Problem:' ,values: (item) => item.problem },
+    { control: 'label', text: 'Solution:' ,values: (item) => item.solution },
+    { control: 'label', text: 'Onduty:' ,values: (item) => item.onduty.map((onduty, index) => {
+                                                                return <p key={index} className='w-full'>{onduty}</p>
+                                                            })  },
+    { control: 'label', text: 'Last Status:' ,values: (item) => item.status },                                                        
+    { control: 'label', text: 'Priority:' ,values: (item) => item.priority },                                                        
+    { control: 'label', text: 'History:', lineBreak: true ,values: (item) => <div className='flex font-semibold flex-col w-full'>
+                                                                <TicketHistory ticket={item.history}/> 
+                                                            </div> },                                                        
+]
 
 const TicketDetail = ({ ticketById }) => {
 
     const renderedDetail = ticketById.map(item => {
         return (
             <Fragment key={item.id}>
-                <div className='flex flex-row w-full'>
-                    <p className='w-full'>Ticket Created By:</p>
-                    <p className='w-full font-semibold'>{item.name}</p>
-                </div>
-                <div className='flex flex-row w-full'>
-                    <p className='w-full'>Ticket Created Date:</p>
-                    <p className='w-full font-semibold'>
-                        {moment(item.date).format('D-M-YYYY, H:mm')}
-                    </p>
-                </div>
-                <div className='flex flex-row w-full'>
-                    <p className='w-full'>Ticket ID:</p>
-                    <p className='w-full font-semibold'>{item.id}</p>
-                </div>
-                <div className='flex flex-row w-full'>
-                    <p className='w-full'>Subject:</p>
-                    <p className='w-full font-semibold'>{item.subject}</p>
-                </div>
-                <div className='flex flex-row w-full'>
-                    <p className='w-full'>User Department:</p>
-                    <p className='w-full font-semibold'>{item.department}</p>
-                </div>
-                <div className='flex flex-row w-full'>
-                    <p className='w-full'>Problem:</p>
-                    <p className='w-full font-semibold'>{item.problem}</p>
-                </div>
-                <div className='flex flex-row w-full'>
-                    <p className='w-full'>Solution:</p>
-                    <p className='w-full font-semibold'>{item.solution}</p>
-                </div>
-                <div className='flex flex-row w-full'>
-                    <p className='w-full'>Onduty:</p>
-                    <div className='flex font-semibold flex-col w-full'>
-                        { 
-                            item.onduty.map((onduty, index) => {
-                                return <p key={index} className='w-full'>{onduty}</p>
-                            }) 
-                        }
-                    </div>
-                </div>
-                <div className='flex flex-row w-full'>
-                    <p className='w-full'>Last Status:</p>
-                    <p className='w-full font-semibold'>{item.status}</p>
-                </div>
-                <div className='flex flex-row w-full'>
-                    <p className='w-full'>Priority:</p>
-                    <p className='w-full font-semibold'>{item.priority}</p>
-                </div>
-                <div className='flex w-full'>
-                    <p className='w-full'>History:</p>
-                </div>
-                { <TicketHistory ticket={item.history}/> }
+                {
+                    valuesLabel.map((value, index) => {
+                        return (
+                            <LabelControl
+                                key={index}
+                                control={value.control}
+                                text={value.text}
+                                lineBreak={value.lineBreak}
+                            >
+                                {value.values(item)}
+                            </LabelControl>
+                        )
+                    })
+                }
             </Fragment>
         )
     })
