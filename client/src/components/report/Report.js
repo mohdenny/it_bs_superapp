@@ -26,15 +26,20 @@ const Report = ({
     } 
 }) => {
     const [ isActiveTab, setIsActiveTab ] = useState('program')
-    const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
+    const [ callModal, setCallModal ] = useState({detail: { program: false, live: false }, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
 
     const handleCallModal = (modal, id = null)  => {
         switch(modal){
-            case 'modal-detail':
+            case 'modal-detail-program':
                 setNameModal(modal)
                 getProgramById(id)
-                setCallModal( prevState => ({...prevState , detail: 'true' }))
+                setCallModal( prevState => ({...prevState , detail: {program: 'true', live: 'false'} }))
+                break
+            case 'modal-detail-live':
+                setNameModal(modal)
+                getProgramById(id)
+                setCallModal( prevState => ({...prevState , detail: {program: 'false', live: 'true'} }))
                 break
             case 'modal-create-form':
                 setNameModal(modal)
@@ -60,7 +65,9 @@ const Report = ({
             getLives()
         }
 
-    }, [getPrograms, getLives, isActiveTab])
+        console.log(callModal)
+
+    }, [callModal, getPrograms, getLives, isActiveTab])
 
     return (
         <>
@@ -104,7 +111,7 @@ const Report = ({
                     )
             }
             { 
-                isActiveTab === 'program' && program && callModal.detail &&
+                program && callModal.detail &&
                     ( 
                         <Modal title={program} nameModal={nameModal} setCallModal={setCallModal}>
                             <ProgramDetail programById={program} />
@@ -112,7 +119,7 @@ const Report = ({
                     )
             }
             { 
-                isActiveTab === 'live-report' && live && callModal.detail &&
+                live && callModal.detail &&
                     ( 
                         <Modal title={live} nameModal={nameModal} setCallModal={setCallModal}>
                             <LiveDetail liveById={live} />

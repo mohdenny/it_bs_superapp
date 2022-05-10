@@ -2,8 +2,12 @@ import React from 'react'
 
 const Modal = ({ title, nameModal, setCallModal, children}) => {
 
+    console.log(nameModal)
+
     const titleModal = (nameModal) => {
         switch(nameModal){
+            case 'modal-detail-program':
+            case 'modal-detail-live':
             case 'modal-detail':
                 return (
                     title.map(item => {
