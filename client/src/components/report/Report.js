@@ -13,6 +13,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getPrograms, getProgramById, getLives, getLiveById } from '../../actions/report'
 import ProgramEditForm from './ProgramEditForm'
+import LiveEditForm from './LiveEditForm'
 
 const Report = ({ 
     getPrograms, 
@@ -32,9 +33,14 @@ const Report = ({
 
     const handleCallModal = (modal, id = null)  => {
         switch(modal){
-            case 'modal-detail':
+            case 'modal-detail-program':
                 setNameModal(modal)
                 getProgramById(id)
+                setCallModal( prevState => ({...prevState , detail: 'true' }))
+                break
+            case 'modal-detail-live':
+                setNameModal(modal)
+                getLiveById(id)
                 setCallModal( prevState => ({...prevState , detail: 'true' }))
                 break
             case 'modal-create-form':
@@ -108,6 +114,7 @@ const Report = ({
                 isActiveTab === 'live-report' && live && callModal.edit && 
                     ( 
                         <Modal title={'Update Live Report'} nameModal={nameModal} setCallModal={setCallModal}>
+                            <LiveEditForm liveById={live}/>
                         </Modal> 
                     )
             }

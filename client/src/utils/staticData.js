@@ -32,3 +32,7 @@ export const dataReportProgram = [
 export const dataReportLive = [
     { 'id': '1', 'program': 'top news', 'onduty': ['Angga Eirisia', 'Neldo'], 'pukul': '2022-04-02T21:05:21+07:00', 'unit': 'TVU 10', 'server': '6', 'modemup': '6', 'lokasi': 'jogja', 'description': '', 'date': '2022-04-02T21:15:21+07:00' }
 ]
+
+export const dataChecklist = [
+    { 'id': '1', 'program': 'top news', 'onduty': ['Angga Eirisia', 'Neldo'], 'pukul': '2022-04-02T21:05:21+07:00', 'unit': 'TVU 10', 'server': '6', 'modemup': '6', 'lokasi': 'jogja', 'description': '', 'date': '2022-04-02T21:15:21+07:00' }
+]

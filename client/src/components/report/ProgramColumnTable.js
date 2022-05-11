@@ -11,7 +11,7 @@ export const PROGRAMCOLUMNSTABLE = [
                 <div className='ml-4'>
                     <button 
                         className="text-sm text-left text-gray-900 font-bold uppercase hover:text-gray-500 break-words w-full" 
-                        onClick={() => onClick('modal-detail', row.original.id)}
+                        onClick={() => onClick('modal-detail-program', row.original.id)}
                     >
                         {value}
                     </button>

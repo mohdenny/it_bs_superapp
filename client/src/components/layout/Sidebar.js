@@ -26,7 +26,7 @@ const Sidebar = ({ children }) => {
     return (
         <>
             <div className="flex flex-col font-poppins-regular h-screen">
-                <nav className="bg-white px-8 py-1 flex items-center justify-between h-20 w-full">
+                <nav className="bg-white px-8 py-1 border flex items-center justify-between h-20 w-full">
                     <div className="flex flex-row space-x-8 h-11">
                         <button className="h-11 w-11 flex items-center justify-center" onClick={() => setToggleMenu(!toggleMenu)}>
                             <HiMenu className='h-6 w-full'/>
