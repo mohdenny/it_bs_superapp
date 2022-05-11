@@ -2,12 +2,8 @@ import React from 'react'
 
 const Modal = ({ title, nameModal, setCallModal, children}) => {
 
-    console.log(nameModal)
-
     const titleModal = (nameModal) => {
         switch(nameModal){
-            case 'modal-detail-program':
-            case 'modal-detail-live':
             case 'modal-detail':
                 return (
                     title.map(item => {
@@ -23,7 +19,6 @@ const Modal = ({ title, nameModal, setCallModal, children}) => {
                 return null
         }
     }
-
 
     return (
         <div className='fixed z-10 inset-0 overflow-y-auto h-full w-full bg-gray-500 bg-opacity-70 transition-opacity' aria-labelledby="modal-title" role="dialog" aria-modal="true">
