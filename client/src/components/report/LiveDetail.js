@@ -4,6 +4,7 @@ import LabelControl from '../form/label/LabelControl'
 
 const valuesLabel = [
     { control: 'label', text: 'Program:' ,values: (item) => item.program },
+    { control: 'label', text: 'Created Date:' ,values: (item) => moment(item.date).format('D-M-YYYY, H:mm') },
     { control: 'label', text: 'Onduty:' ,values: (item) => item.onduty.map((onduty, index) => {
                                                                 return <p key={index} className='w-full'>{onduty}</p>
                                                             })  },
@@ -12,8 +13,7 @@ const valuesLabel = [
     { control: 'label', text: 'Server:' ,values: (item) => item.server },
     { control: 'label', text: 'Modem Up:' ,values: (item) => item.modemup },
     { control: 'label', text: 'Lokasi:' ,values: (item) => item.lokasi },
-    { control: 'label', text: 'Description:' ,values: (item) => item.description },
-    { control: 'label', text: 'Created Date:' ,values: (item) => moment(item.date).format('D-M-YYYY, H:mm') }
+    { control: 'label', text: 'Description:' ,values: (item) => item.description }
 ]
 
 const LiveDetail = ({ liveById }) => {
