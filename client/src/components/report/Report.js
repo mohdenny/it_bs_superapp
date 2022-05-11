@@ -12,6 +12,7 @@ import LiveDetail from './LiveDetail'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getPrograms, getProgramById, getLives, getLiveById } from '../../actions/report'
+import ProgramEditForm from './ProgramEditForm'
 
 const Report = ({ 
     getPrograms, 
@@ -26,20 +27,15 @@ const Report = ({
     } 
 }) => {
     const [ isActiveTab, setIsActiveTab ] = useState('program')
-    const [ callModal, setCallModal ] = useState({detail: { program: false, live: false }, create: false, edit: false})
+    const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
 
     const handleCallModal = (modal, id = null)  => {
         switch(modal){
-            case 'modal-detail-program':
+            case 'modal-detail':
                 setNameModal(modal)
                 getProgramById(id)
-                setCallModal( prevState => ({...prevState , detail: {program: 'true', live: 'false'} }))
-                break
-            case 'modal-detail-live':
-                setNameModal(modal)
-                getProgramById(id)
-                setCallModal( prevState => ({...prevState , detail: {program: 'false', live: 'true'} }))
+                setCallModal( prevState => ({...prevState , detail: 'true' }))
                 break
             case 'modal-create-form':
                 setNameModal(modal)
@@ -65,9 +61,7 @@ const Report = ({
             getLives()
         }
 
-        console.log(callModal)
-
-    }, [callModal, getPrograms, getLives, isActiveTab])
+    }, [getPrograms, getLives, isActiveTab])
 
     return (
         <>
@@ -89,7 +83,7 @@ const Report = ({
             { 
                 isActiveTab === 'program' && callModal.create && 
                     ( 
-                        <Modal title={'Create new report Program'} nameModal={nameModal} setCallModal={setCallModal}>
+                        <Modal title={'Create new Program Report'} nameModal={nameModal} setCallModal={setCallModal}>
                             <ProgramCreateForm />
                         </Modal> 
                     )
@@ -97,21 +91,28 @@ const Report = ({
             { 
                 isActiveTab === 'live-report' && callModal.create && 
                     ( 
-                        <Modal title={'Create new report Live'} nameModal={nameModal} setCallModal={setCallModal}>
+                        <Modal title={'Create new Live report'} nameModal={nameModal} setCallModal={setCallModal}>
                             <LiveCreateForm />
                         </Modal> 
                     )
             }
             { 
-                program && callModal.edit && 
+                isActiveTab === 'program' && program && callModal.edit && 
                     ( 
-                        <Modal title={'Update ticket'} nameModal={nameModal} setCallModal={setCallModal}>
-                            {/* <TicketEditForm ticketById={ticket}/> */}
+                        <Modal title={'Update Program Report'} nameModal={nameModal} setCallModal={setCallModal}>
+                            <ProgramEditForm programById={program}/>
                         </Modal> 
                     )
             }
             { 
-                program && callModal.detail &&
+                isActiveTab === 'live-report' && live && callModal.edit && 
+                    ( 
+                        <Modal title={'Update Live Report'} nameModal={nameModal} setCallModal={setCallModal}>
+                        </Modal> 
+                    )
+            }
+            { 
+                isActiveTab === 'program' && program && callModal.detail &&
                     ( 
                         <Modal title={program} nameModal={nameModal} setCallModal={setCallModal}>
                             <ProgramDetail programById={program} />
@@ -119,7 +120,7 @@ const Report = ({
                     )
             }
             { 
-                live && callModal.detail &&
+                isActiveTab === 'live-report' && live && callModal.detail &&
                     ( 
                         <Modal title={live} nameModal={nameModal} setCallModal={setCallModal}>
                             <LiveDetail liveById={live} />
