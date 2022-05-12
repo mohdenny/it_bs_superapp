@@ -7,13 +7,13 @@ const ButtonRegular = ({ label, onClick, icon, color, textColor }) => {
     const renderedIcon = () => {
         switch(icon){
             case 'search':
-                return <HiSearch className='h-6 w-11'/>
+                return <HiSearch className='h-6 w-10'/>
             case 'add':
-                return <HiDocumentAdd className='h-6 w-11'/>
+                return <HiDocumentAdd className='h-6 w-10'/>
             case 'pencil':
-                return <HiPencilAlt className='h-6 w-11'/>
+                return <HiPencilAlt className='h-6 w-10'/>
             case 'trash':
-                return <HiTrash className='h-6 w-11'/>
+                return <HiTrash className='h-6 w-10'/>
             default:
                 return null
         }

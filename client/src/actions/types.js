@@ -17,3 +17,9 @@ export const GET_LIVES = 'GET_LIVES'
 export const GET_LIVE = 'GET_LIVE'
 export const CLEAR_REPORT = 'CLEAR_REPORT'
 export const REPORT_ERROR= 'REPORT_ERROR'
+
+// checklist
+export const GET_CHECKLISTS = 'GET_CHECKLISTS'
+export const GET_CHECKLIST = 'GET_CHECKLIST'
+export const CLEAR_CHECKLIST = 'CLEAR_CHECKLIST'
+export const CHECKLIST_ERROR = 'CHECKLIST_ERROR'
