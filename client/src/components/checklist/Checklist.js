@@ -1,4 +1,5 @@
 import React from 'react'
+import ChecklistBar from './ChecklistBar'
 
 const Checklist = () => {
     return (
