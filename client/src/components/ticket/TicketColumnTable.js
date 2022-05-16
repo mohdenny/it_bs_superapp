@@ -57,8 +57,8 @@ export const TICKETCOLUMNSTABLE = [
         }
     },
     {
-        Header: 'Date',
-        Footer: 'Date',
+        Header: 'Date Created',
+        Footer: 'Date Created',
         accessor: 'date',
         Cell: ({ value }) => {
             return format(new Date(value), 'dd/MM/yyyy HH:mm')

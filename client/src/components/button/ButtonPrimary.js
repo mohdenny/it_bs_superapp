@@ -22,11 +22,13 @@ const ButtonRegular = ({ label, onClick, icon, color, textColor }) => {
     return (
         <button 
             className={classnames(`bg-${color}-500 h-11 text-${textColor} py-1 flex flex-row items-center justify-center border-2 rounded-xl hover:bg-${color}-600`, {
-                'pl-1 pr-4' : label
+                'pl-1 pr-4' : label && icon 
+            }, {
+                'px-4' : !icon 
             })} 
             onClick={onClick}
         >
-            {renderedIcon()}
+            { icon && renderedIcon() }
             {label} 
         </button>
     )

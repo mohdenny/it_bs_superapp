@@ -25,17 +25,24 @@ export const CHECKLISTCOLUMNTABLE = [
         }
     },
     {
-        Header: 'Pukul',
-        Footer: 'Pukul',
-        accessor: 'pukul',
-        sticky: 'left',
+        Header: 'Day',
+        Footer: 'Day',
+        accessor: 'day',
+        Cell: ({ value }) => {
+            return format(new Date(value), 'eeee')
+        }
+    },
+    {
+        Header: 'Time',
+        Footer: 'Time',
+        accessor: 'time',
         Cell: ({ value }) => {
             return format(new Date(value), 'HH:mm')
         }
     },
     {
-        Header: 'Date',
-        Footer: 'Date',
+        Header: 'Date Created',
+        Footer: 'Date Created',
         accessor: 'date',
         Cell: ({ value }) => {
             return format(new Date(value), 'dd/MM/yyyy HH:mm')

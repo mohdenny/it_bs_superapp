@@ -6,7 +6,7 @@ const ButtonSecondary = ({
     label, 
     isActive, 
     setIsActive, 
-    canClicked,
+    canClicked = false,
     onClick, 
     disabled,
     children

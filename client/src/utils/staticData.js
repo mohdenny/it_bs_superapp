@@ -34,5 +34,5 @@ export const dataReportLive = [
 ]
 
 export const dataChecklist = [
-    { 'id': '1', 'pukul': '2022-04-02T21:11:00+07:00', 'onduty': ['Angga Eirisia', 'Neldo'], 'encoder': ['graphic', 'vip03', 'it02-pcr1'], 'batchfiles': ['amberfine', 'dalet-itx', 'xtend', 'aptn'], 'wires': ['aptn'], 'storage': [{'name': 'script_backup', 'ip': '192.168.150.204'}], 'itx': '', 'dalet': '', 'date': '2022-04-02T21:15:21+07:00' }
+    { 'id': '1', 'day': '2022-04-02T11:00:00+07:00', 'time': '2022-04-02T11:00:00+07:00', 'onduty': ['Angga Eirisia', 'Neldo'], 'encoder': ['graphic', 'vip03', 'it02-pcr1'], 'batchfiles': ['amberfine', 'dalet-itx', 'xtend', 'aptn'], 'wires': ['aptn'], 'storage': [{'name': 'script_backup', 'ip': '192.168.150.204'}], 'itx': '', 'dalet': '', 'date': '2022-04-02T11:15:21+07:00' }
 ]
