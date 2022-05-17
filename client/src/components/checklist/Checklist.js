@@ -13,6 +13,11 @@ const Checklist = ({ getChecklists, getChecklistById, checklist: { checklists, c
     const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
 
+    const checkingAlreadyFilled = (data, time) => {
+        let count = data.filter(item => item.time === time)
+        return count.length
+    }
+
     const handleCallModal = (modal, id = null)  => {
         switch(modal){
             case 'modal-detail':
@@ -33,9 +38,11 @@ const Checklist = ({ getChecklists, getChecklistById, checklist: { checklists, c
         <>
             <div className='space-y-4 h-full w-full'>
                 <ChecklistBar 
+                    checklists={checklists}
                     handleCallModal={handleCallModal}
-                    // isActive={isActiveFilterStatus} 
-                    // setIsActive={setIsActiveFilterStatus}
+                    isActive={isActiveFilterStatus} 
+                    setIsActive={setIsActiveFilterStatus}
+                    checkingAlreadyFilled={checkingAlreadyFilled}
                 />
                 <TableContainer>
                     {
