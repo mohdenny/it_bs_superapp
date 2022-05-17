@@ -35,10 +35,7 @@ export const CHECKLISTCOLUMNTABLE = [
     {
         Header: 'Time',
         Footer: 'Time',
-        accessor: 'time',
-        Cell: ({ value }) => {
-            return format(new Date(value), 'HH:mm')
-        }
+        accessor: 'time'
     },
     {
         Header: 'Date Created',
