@@ -53,6 +53,7 @@ const TicketBar = ({
                     label='Create New'
                     icon='add'
                     color='blue'
+                    colorType='light'
                     textColor='white'
                     onClick={() => handleCallModal('modal-create-form')}
                 />
