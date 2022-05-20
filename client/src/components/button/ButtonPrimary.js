@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiSearch, HiPencilAlt, HiTrash, HiDocumentAdd } from 'react-icons/hi'
 import classnames from 'classnames'
 
-const ButtonRegular = ({ label, onClick, icon, color, textColor }) => {
+const ButtonRegular = ({ label, onClick, icon, color, colorType, textColor }) => {
+
+    const [colorClass, setColorClass] = useState('')
+    const [colorHoverClass, setColorHoverClass] = useState('')
+
+    useEffect(() => {
+
+        switch(colorType){
+            case 'light':
+                setColorClass(`bg-${color}-500`)
+                setColorHoverClass(`bg-${color}-600`)
+                break
+            case 'dark':
+                setColorClass(`bg-${color}-900`)
+                setColorHoverClass(`bg-${color}-800`)
+                break
+            default:
+                return null
+        }
+
+    }, [colorType, color])
 
     const renderedIcon = () => {
         switch(icon){
@@ -21,7 +41,7 @@ const ButtonRegular = ({ label, onClick, icon, color, textColor }) => {
 
     return (
         <button 
-            className={classnames(`bg-${color}-500 h-11 text-${textColor} py-1 flex flex-row items-center justify-center border-2 rounded-xl hover:bg-${color}-600`, {
+            className={classnames(`${colorClass} h-11 text-${textColor} py-1 flex flex-row items-center justify-center border-2 rounded-xl hover:${colorHoverClass}`, {
                 'pl-1 pr-4' : label && icon 
             }, {
                 'px-4' : !icon 
