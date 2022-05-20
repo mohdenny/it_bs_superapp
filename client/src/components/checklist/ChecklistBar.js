@@ -5,7 +5,7 @@ import ButtonControl from '../button/ButtonControl'
 import { format } from 'date-fns'
 
 const valuesButtonSecondary = [
-    { name: '', control: 'primary', color: 'gray', textColor: 'white', label: format(new Date(), 'eeee, MMMM MM, yyyy'), canClicked: 'false' },
+    { name: '', control: 'primary', color: 'gray', colorType: 'dark', textColor: 'white', label: format(new Date(), 'eeee, MMMM MM, yyyy'), canClicked: 'false' },
     { name: '', control: 'secondary', label: 'All', canClicked: 'true' },
     { name: 'three', control: 'secondary', label: '03:00', canClicked: 'true' },
     { name: 'seven', control: 'secondary', label: '07:00', canClicked: 'true' },
@@ -31,12 +31,13 @@ const ChecklistBar = ({
                                 {
                                     checkingAlreadyFilled(checklists, item.label) !== 0 ?
                                         <ButtonControl
-                                            className={'border-blue-300'}
+                                            className={'border-green-300'}
                                             control={item.control}
                                             name={item.name}
                                             label={item.label}
                                             canClicked={item.canClicked}
                                             color={item.color}
+                                            colorType={item.colorType}
                                             textColor={item.textColor}
                                             {...rest}
                                         />
@@ -47,6 +48,7 @@ const ChecklistBar = ({
                                             label={item.label}
                                             canClicked={item.canClicked}
                                             color={item.color}
+                                            colorType={item.colorType}
                                             textColor={item.textColor}
                                             {...rest}
                                         />
@@ -62,6 +64,7 @@ const ChecklistBar = ({
                     label='Create New'
                     icon='add'
                     color='blue'
+                    colorType= 'light'
                     textColor='white'
                     onClick={() => handleCallModal('modal-create-form')}
                 />
