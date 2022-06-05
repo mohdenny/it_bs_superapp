@@ -6,22 +6,22 @@ const ButtonSecondary = ({
     label, 
     isActive, 
     setIsActive, 
+    isActiveOthers = '', 
+    setIsActiveOthers = '', 
     canClicked = false,
     onClick, 
     disabled,
-    className = '',
-    children
+    className = ''
 }) => {
     
     const canClickedButton = (
         <button 
             className={classnames(`${className} bg-white h-11 px-4 py-1 border-2 rounded-xl hover:bg-gray-100`, {
-                'bg-gray-900 border-gray-600 text-white shadow-md hover:bg-gray-800' : isActive === name
+                'bg-gray-900 border-gray-600 text-white shadow-md hover:bg-gray-800' : isActive === name || isActiveOthers === name
             })} 
-            onClick={() => setIsActive(name)}
+            onClick={() => setIsActive(name) || setIsActiveOthers(name)}
         >
-            {label} 
-            {children}
+            {label}
         </button>
     )
 

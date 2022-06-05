@@ -4,12 +4,14 @@ import TableContainer from '../table/TableContainer'
 import { Table } from '../table/Table'
 import { CHECKLISTCOLUMNTABLE } from './ChecklistColumnTable'
 import BadgeControl from '../badge/BadgeControl'
+import { format } from 'date-fns'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getChecklists, getChecklistById } from '../../actions/checklist'
+import { getChecklists, getChecklistById, getChecklistByDate } from '../../actions/checklist'
 
-const Checklist = ({ getChecklists, getChecklistById, checklist: { checklists, checklist } }) => {
-    const [ isActiveFilterStatus, setIsActiveFilterStatus ] = useState('')
+const Checklist = ({ getChecklists, getChecklistById, getChecklistByDate, checklist: { checklists, checklist } }) => {
+    const [ isActiveFilterDate, setIsActiveFilterDate ] = useState(format(new Date(), 'dd-MM-yyyy'))
+    const [ isActiveFilterTime, setIsActiveFilterTime ] = useState('')
     const [ callModal, setCallModal ] = useState({detail: false, create: false, edit: false})
     const [ nameModal, setNameModal ] = useState()
 
@@ -31,8 +33,15 @@ const Checklist = ({ getChecklists, getChecklistById, checklist: { checklists, c
     }
 
     useEffect(() => {
-        getChecklists()
-    }, [getChecklists])
+        if(!isActiveFilterTime && !isActiveFilterDate){
+            getChecklists()
+        }else{
+            getChecklistByDate(isActiveFilterDate)
+            return null
+        }   
+
+        console.log(isActiveFilterDate)
+    }, [getChecklists, isActiveFilterDate, isActiveFilterTime, getChecklistByDate])
 
     return (
         <>
@@ -40,8 +49,10 @@ const Checklist = ({ getChecklists, getChecklistById, checklist: { checklists, c
                 <ChecklistBar 
                     checklists={checklists}
                     handleCallModal={handleCallModal}
-                    isActive={isActiveFilterStatus} 
-                    setIsActive={setIsActiveFilterStatus}
+                    isActive={isActiveFilterDate} 
+                    isActiveOthers={isActiveFilterTime} 
+                    setIsActive={setIsActiveFilterDate}
+                    setIsActiveOthers={setIsActiveFilterTime}
                     checkingAlreadyFilled={checkingAlreadyFilled}
                 />
                 <TableContainer>
@@ -57,6 +68,7 @@ const Checklist = ({ getChecklists, getChecklistById, checklist: { checklists, c
 Checklist.propTypes = {
     getChecklists: PropTypes.func.isRequired,
     getChecklistById: PropTypes.func.isRequired,
+    getChecklistByDate: PropTypes.func.isRequired,
     checklist: PropTypes.object.isRequired
 }
 
@@ -68,5 +80,6 @@ export default connect(
     mapStateToProps,
     {
         getChecklists,
-        getChecklistById
+        getChecklistById,
+        getChecklistByDate
     })(Checklist)

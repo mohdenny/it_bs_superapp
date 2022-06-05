@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { HiSearch, HiPencilAlt, HiTrash, HiDocumentAdd } from 'react-icons/hi'
 import classnames from 'classnames'
 
-const ButtonRegular = ({ label, onClick, icon, color, colorType, textColor }) => {
+const ButtonRegular = ({ label, onClick, icon, color, colorType, textColor, children }) => {
 
     const [colorClass, setColorClass] = useState('')
     const [colorHoverClass, setColorHoverClass] = useState('')
@@ -49,7 +49,7 @@ const ButtonRegular = ({ label, onClick, icon, color, colorType, textColor }) =>
             onClick={onClick}
         >
             { icon && renderedIcon() }
-            {label} 
+            { children || label} 
         </button>
     )
 }

@@ -74,6 +74,7 @@ export const PROGRAMCOLUMNSTABLE = [
                         control='primary'
                         icon='pencil'
                         color='gray'
+                        colorType='light'
                         textColor='white'
                         onClick={() => onClick('modal-edit-form', row.original.id)}
                     />
@@ -81,6 +82,7 @@ export const PROGRAMCOLUMNSTABLE = [
                         control='primary'
                         icon='trash'
                         color='red'
+                        colorType='light'
                         textColor='white'
                         onClick={null}
                     />

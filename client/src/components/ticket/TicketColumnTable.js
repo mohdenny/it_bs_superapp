@@ -75,6 +75,7 @@ export const TICKETCOLUMNSTABLE = [
                         control='primary'
                         icon='pencil'
                         color='gray'
+                        colorType='light'
                         textColor='white'
                         onClick={() => onClick('modal-edit-form', row.original.id)}
                     />
@@ -82,6 +83,7 @@ export const TICKETCOLUMNSTABLE = [
                         control='primary'
                         icon='trash'
                         color='red'
+                        colorType='light'
                         textColor='white'
                         onClick={null}
                     />

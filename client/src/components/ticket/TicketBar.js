@@ -16,7 +16,6 @@ const valuesButtonSecondary = [
 ]
 
 const TicketBar = ({ 
-    tickets,
     handleCallModal,
     countTicketByStatus, 
     ticketToCount,

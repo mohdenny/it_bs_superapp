@@ -2,7 +2,8 @@ import {
     GET_CHECKLISTS,
     GET_CHECKLIST,
     CLEAR_CHECKLIST,
-    CHECKLIST_ERROR
+    CHECKLIST_ERROR,
+    GET_CHECKLIST_BY_DATE
 } from '../actions/types'
 
 const initialState = {
@@ -17,6 +18,12 @@ const checklistReducer = (state = initialState, action) => {
     
     switch (type) {
         case GET_CHECKLISTS:
+            return {
+                ...state,
+                checklists: payload,
+                loading: false
+            }
+        case GET_CHECKLIST_BY_DATE:
             return {
                 ...state,
                 checklists: payload,
